@@ -12,7 +12,7 @@ views:
     layout:
       # Optimiert für iPad Air 2020 Querformat: 1024 × 768 CSS-Pixel.
       grid-template-columns: 300px minmax(0, 1fr) 54px
-      grid-template-rows: 82px 1px minmax(0, 1fr) 70px
+      grid-template-rows: 96px 1px minmax(0, 1fr) 64px
       grid-template-areas: |
         "presence title close"
         "divider divider divider"
@@ -48,6 +48,8 @@ views:
       - type: custom:stack-in-card
         view_layout:
           grid-area: presence
+          align-self: center
+          justify-self: start
         mode: vertical
         card_mod:
           style: |
@@ -55,7 +57,7 @@ views:
               background: transparent;
               box-shadow: none;
               border: 0;
-              padding: 2px 0 0 0;
+              padding: 0;
             }
         cards:
           - type: markdown
@@ -107,6 +109,8 @@ views:
       - type: custom:mushroom-template-card
         view_layout:
           grid-area: title
+          align-self: center
+          justify-self: center
         primary: STARTSEITE
         secondary: Wohnung
         icon: none
@@ -117,7 +121,7 @@ views:
           style: |
             ha-card {
               width: 280px;
-              margin: 2px auto 0;
+              margin: 0 auto;
               text-align: center;
               border-radius: 0;
               padding: 4px 0 0;
@@ -134,6 +138,8 @@ views:
       - type: custom:mushroom-template-card
         view_layout:
           grid-area: close
+          align-self: center
+          justify-self: center
         icon: mdi:close-circle-outline
         primary_info: none
         secondary_info: none
@@ -145,7 +151,7 @@ views:
             ha-card {
               width: 44px;
               height: 44px;
-              margin: 8px auto 0;
+              margin: 0 auto;
               border-radius: 50%;
               background: rgba(18, 28, 78, .46);
               border: 0;
@@ -205,8 +211,10 @@ views:
         card_mod:
           style: |
             ha-card {
+              width: min(100%, calc(100dvh - 172px));
               max-width: 100%;
-              max-height: calc(100dvh - 190px);
+              max-height: calc(100dvh - 204px);
+              aspect-ratio: 1003 / 924;
               margin: 0 auto;
               background: rgba(8, 16, 50, .34);
               border: 0;
@@ -460,7 +468,7 @@ views:
             ha-card {
               width: min(760px, calc(100vw - 28px));
               margin: 0 auto;
-              padding: 6px 18px;
+              padding: 4px 18px;
               border-radius: 22px 22px 0 0;
               background: rgba(26, 35, 90, .78);
               border: 1px solid rgba(156, 171, 218, .12);
@@ -468,7 +476,7 @@ views:
               --chip-background: transparent;
               --chip-box-shadow: none;
               --chip-border-width: 0;
-              --chip-height: 48px;
+              --chip-height: 44px;
               --chip-font-size: 10px;
               --chip-icon-size: 21px;
               --primary-text-color: rgba(255,255,255,.70);

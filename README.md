@@ -46,14 +46,14 @@ Die Karten sind bewusst als normale Lovelace-/Mushroom-Konfiguration angelegt. N
 
 ## iPad-Air-Layout
 
-Die Startseite nutzt ein kompaktes Grid mit 300 px Sidebar, reduzierter Kopfzeile, Text-Überschrift ohne Kasten, kompakter Bottom-Navigation und einem auf die verfügbare Höhe begrenzten Floorplan. Dadurch bleiben Header, Wetter, Kalender, Image-Karte und Navigation im iPad-Air-Querformat auf einem Bildschirm.
+Die Startseite nutzt ein kompaktes Grid mit 300 px Sidebar, einer 96 px hohen und zentriert ausgerichteten Kopfzeile, Text-Überschrift ohne Kasten, kompakter Bottom-Navigation und einem Floorplan mit festem Seitenverhältnis `1003 / 924`. Dadurch werden Header, Wetter, Kalender, Image-Karte und Navigation im iPad-Air-Querformat ohne Scrollen auf einen Bildschirm skaliert.
 
 ## Aufbau der Startseite
 
 - Kopfzeile links: Anwesenheit als kompakte Mushroom Person Cards.
 - Kopfzeile mittig: dynamische Titelkarte als reiner Text ohne Rahmen/Kasten.
 - Linke Sidebar: Wetter- und Kalenderkarte nur für die Startseite.
-- Mitte: Floorplan als `picture-elements` Image-Karte mit frei positionierbaren Mushroom Cards.
+- Mitte: Floorplan als `picture-elements` Image-Karte mit `1003 / 924` Seitenverhältnis und frei positionierbaren Mushroom Cards.
 - Auf dem Floorplan: anpassbare transparente Raumflächen für Wohnzimmer, Küche, Büro, Schlafzimmer und Flur.
 - Unten: kompakte Navigationsleiste mit Mushroom Chips für spätere Bereiche und Raumseiten.
 
