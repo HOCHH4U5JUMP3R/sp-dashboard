@@ -1,6 +1,6 @@
 # SP Home-Assistant Dashboard
 
-Dieses Repository enthält eine HACS-kompatible **Dashboard**-Installation für die Startseite eines dunklen Home-Assistant Dashboards im Stil des bereitgestellten Screenshots.
+Dieses Repository enthält eine HACS-kompatible **Dashboard**-Installation für die Startseite eines dunklen Home-Assistant Dashboards im Stil des bereitgestellten Screenshots. Die aktuelle Startseite ist auf das iPad-Air-2020-Querformat mit 1024 × 768 CSS-Pixeln optimiert und soll ohne Scrollen auf einen Bildschirm passen.
 
 ## Direkt über HACS installieren
 
@@ -24,12 +24,14 @@ Dieses Repository enthält eine HACS-kompatible **Dashboard**-Installation für 
 - `hacs.json` – HACS-Metadaten für die Kategorie **Dashboard**.
 - `dist/sp-dashboard.js` – HACS-konformes Dashboard-Element und Installer-Karte.
 - `dist/startseite.yaml` – Startseitenvorlage mit `/hacsfiles/sp-dashboard/...` Pfaden.
-- `dist/floorplan-placeholder.svg` – über HACS ausgelieferter Platzhalter-Grundriss.
+- `dist/floorplan.svg` – über HACS ausgelieferter Floorplan für die Image-/Picture-Elements-Karte.
+- `dist/floorplan-placeholder.svg` – Kompatibilitätskopie des ursprünglichen Platzhalter-Grundrisses.
 
 Zusätzlich bleiben die manuellen Quellen erhalten:
 
 - `dashboards/startseite.yaml` – Lovelace Raw-Konfiguration mit `/local/...` Pfad für manuelle Installationen.
-- `www/sp-dashboard/floorplan-placeholder.svg` – Grundriss-Platzhalter für manuelle Installationen unter `config/www/`.
+- `www/sp-dashboard/floorplan.svg` – Floorplan für manuelle Installationen unter `config/www/`.
+- `www/sp-dashboard/floorplan-placeholder.svg` – Kompatibilitätskopie des ursprünglichen Platzhalter-Grundrisses.
 
 ## Voraussetzungen
 
@@ -42,13 +44,38 @@ Installiere über HACS zusätzlich die folgenden Frontend-Komponenten:
 
 Die Karten sind bewusst als normale Lovelace-/Mushroom-Konfiguration angelegt. Nach dem Import kannst du Entitäten, Reihenfolge, Positionen und Kartentypen weiterhin über die Home-Assistant Weboberfläche bzw. den Raw-Konfigurationseditor anpassen.
 
+## iPad-Air-Layout
+
+Die Startseite nutzt ein kompaktes Grid mit 300 px Sidebar, reduzierter Kopfzeile, Text-Überschrift ohne Kasten, kompakter Bottom-Navigation und einem auf die verfügbare Höhe begrenzten Floorplan. Dadurch bleiben Header, Wetter, Kalender, Image-Karte und Navigation im iPad-Air-Querformat auf einem Bildschirm.
+
 ## Aufbau der Startseite
 
-- Kopfzeile links: Anwesenheit als Mushroom Person Cards.
-- Kopfzeile mittig: dynamische Titelkarte für Seite/Raum.
+- Kopfzeile links: Anwesenheit als kompakte Mushroom Person Cards.
+- Kopfzeile mittig: dynamische Titelkarte als reiner Text ohne Rahmen/Kasten.
 - Linke Sidebar: Wetter- und Kalenderkarte nur für die Startseite.
-- Mitte: Grundriss als `picture-elements` Karte mit frei positionierbaren Mushroom Cards.
-- Unten: Navigationsleiste mit Mushroom Chips für spätere Bereiche und Raumseiten.
+- Mitte: Floorplan als `picture-elements` Image-Karte mit frei positionierbaren Mushroom Cards.
+- Auf dem Floorplan: anpassbare transparente Raumflächen für Wohnzimmer, Küche, Büro, Schlafzimmer und Flur.
+- Unten: kompakte Navigationsleiste mit Mushroom Chips für spätere Bereiche und Raumseiten.
+
+## Raumflächen anpassen
+
+Die Raumauswahl bleibt direkt auf der Image-Karte. Jede Fläche ist ein transparentes `custom:mushroom-template-card` Element im `picture-elements` Bereich. Du kannst pro Raum die Zielseite und die Fläche ändern:
+
+```yaml
+- type: custom:mushroom-template-card
+  tap_action:
+    action: navigate
+    navigation_path: /lovelace/wohnzimmer
+  style:
+    top: 70%
+    left: 72%
+    width: 31%
+    height: 27%
+```
+
+- `top` und `left` verschieben die Fläche.
+- `width` und `height` ändern die Größe.
+- `navigation_path` bestimmt die spätere Raumseite.
 
 ## Platzhalter-Entitäten anpassen
 
@@ -68,7 +95,7 @@ Im Grundriss werden Mushroom Cards als `picture-elements` Elemente verwendet. Di
 style:
   top: 67%
   left: 82%
-  width: 190px
+  width: 165px
 ```
 
 So kannst du alle gängigen Mushroom Cards ergänzen, austauschen und an die gewünschte Stelle setzen.

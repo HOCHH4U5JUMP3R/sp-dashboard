@@ -1,6 +1,6 @@
 const SP_DASHBOARD_VERSION = '0.2.0';
 const TEMPLATE_URL = '/hacsfiles/sp-dashboard/startseite.yaml';
-const FLOORPLAN_URL = '/hacsfiles/sp-dashboard/floorplan-placeholder.svg';
+const FLOORPLAN_URL = '/hacsfiles/sp-dashboard/floorplan.svg';
 
 class SpDashboardCard extends HTMLElement {
   constructor() {
@@ -144,17 +144,17 @@ class SpDashboardCard extends HTMLElement {
           <div class="eyebrow">HACS Dashboard Element</div>
           <h2>${this.escapeHtml(title)}</h2>
           <p>
-            Diese HACS-Installation liefert die SP-Dashboard Startseitenvorlage, den Grundriss-Platzhalter
+            Diese HACS-Installation liefert die SP-Dashboard Startseitenvorlage, deinen Floorplan
             und diese Installer-Karte aus. Kopiere die YAML-Vorlage und füge sie unter
             <strong>Einstellungen → Dashboards → Raw-Konfigurationseditor</strong> ein.
           </p>
           <div class="actions">
             <button type="button" id="copy">${this._copied ? 'YAML kopiert ✓' : 'Startseiten-YAML kopieren'}</button>
             <a class="button" href="${TEMPLATE_URL}" target="_blank" rel="noopener noreferrer">YAML öffnen</a>
-            <a class="button" href="${FLOORPLAN_URL}" target="_blank" rel="noopener noreferrer">Grundriss öffnen</a>
+            <a class="button" href="${FLOORPLAN_URL}" target="_blank" rel="noopener noreferrer">Floorplan öffnen</a>
           </div>
           <div class="notice ${this._error ? 'error' : ''}">
-            ${this._error || 'Der Grundriss ist bereits über /hacsfiles/sp-dashboard/floorplan-placeholder.svg eingebunden. Du musst keine Dateien manuell nach /config/www kopieren.'}
+            ${this._error || 'Der Floorplan ist bereits über /hacsfiles/sp-dashboard/floorplan.svg eingebunden. Die transparenten Raumflächen in der Image-Karte kannst du über top/left/width/height anpassen.'}
           </div>
           ${previewEnabled ? `<pre>${templatePreview}</pre>` : ''}
           <div class="meta">SP Dashboard ${SP_DASHBOARD_VERSION} · custom:sp-dashboard</div>
