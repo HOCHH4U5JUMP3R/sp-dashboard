@@ -1,0 +1,362 @@
+# SP Dashboard · Startseite
+# Home Assistant Lovelace Raw-Konfiguration
+# Voraussetzungen über HACS installieren: Mushroom Cards, card-mod, layout-card, stack-in-card.
+# Danach in Home Assistant unter Einstellungen → Dashboards → Raw-Konfigurationseditor einfügen
+# oder als YAML-Dashboard referenzieren. Alle Mushroom Cards bleiben danach über die UI editierbar.
+
+views:
+  - title: Startseite
+    path: startseite
+    icon: mdi:home
+    type: custom:grid-layout
+    layout:
+      grid-template-columns: 360px 1fr 96px
+      grid-template-rows: 128px 1px minmax(0, 1fr) 96px
+      grid-template-areas: |
+        "presence title close"
+        "divider divider divider"
+        "sidebar floorplan spacer"
+        "nav nav nav"
+      gap: 18px 24px
+      margin: 0
+      padding: 24px
+      mediaquery:
+        "(max-width: 900px)":
+          grid-template-columns: 1fr
+          grid-template-rows: auto auto 1px auto auto auto
+          grid-template-areas: |
+            "title"
+            "presence"
+            "divider"
+            "floorplan"
+            "sidebar"
+            "nav"
+          padding: 16px
+          gap: 14px
+    background:
+      opacity: 100
+      alignment: center
+      size: cover
+      repeat: no-repeat
+      attachment: fixed
+      image: >-
+        linear-gradient(180deg, rgba(5, 10, 36, 1) 0%, rgba(8, 14, 48, 1) 58%, rgba(15, 28, 82, 1) 100%)
+    cards:
+      # Kopfzeile links: Anwesenheit der Personen.
+      - type: custom:stack-in-card
+        view_layout:
+          grid-area: presence
+        mode: vertical
+        card_mod:
+          style: |
+            ha-card {
+              background: transparent;
+              box-shadow: none;
+              border: 0;
+              padding: 10px 0 0 0;
+            }
+        cards:
+          - type: markdown
+            content: "**ANWESENHEIT**"
+            card_mod:
+              style: |
+                ha-card {
+                  color: rgba(255,255,255,.58);
+                  background: transparent;
+                  box-shadow: none;
+                  border: 0;
+                  font-size: 12px;
+                  letter-spacing: .08em;
+                  padding: 0 0 8px 0;
+                }
+          - type: horizontal-stack
+            cards:
+              - type: custom:mushroom-person-card
+                entity: person.person_1
+                name: Person 1
+                icon_type: icon
+                primary_info: none
+                secondary_info: none
+                layout: vertical
+                card_mod:
+                  style: &person_chip_style |
+                    ha-card {
+                      width: 52px;
+                      height: 52px;
+                      border-radius: 50%;
+                      background: rgba(20, 30, 78, .48);
+                      border: 1px solid rgba(156, 171, 218, .28);
+                      box-shadow: none;
+                      --icon-size: 28px;
+                      --rgb-state-person-home: 42, 169, 255;
+                      --rgb-state-person-not-home: 155, 160, 178;
+                    }
+              - type: custom:mushroom-person-card
+                entity: person.person_2
+                name: Person 2
+                icon_type: icon
+                primary_info: none
+                secondary_info: none
+                layout: vertical
+                card_mod:
+                  style: *person_chip_style
+
+      # Dynamische Überschrift: Für Raumseiten nur title/subtitle/path kopieren und anpassen.
+      - type: custom:mushroom-template-card
+        view_layout:
+          grid-area: title
+        primary: STARTSEITE
+        secondary: Wohnung
+        icon: none
+        layout: vertical
+        tap_action:
+          action: none
+        card_mod:
+          style: |
+            ha-card {
+              width: 280px;
+              margin: 0 auto;
+              text-align: center;
+              border-radius: 12px;
+              padding: 20px 24px 18px;
+              background: rgba(8, 14, 42, .58);
+              border: 1px solid rgba(158, 174, 224, .35);
+              box-shadow: inset 0 0 0 1px rgba(255,255,255,.025), 0 20px 55px rgba(0,0,0,.18);
+              --card-primary-font-size: 24px;
+              --card-primary-font-weight: 800;
+              --card-primary-letter-spacing: .08em;
+              --card-secondary-font-size: 12px;
+              --card-secondary-color: rgba(255,255,255,.58);
+            }
+
+      - type: custom:mushroom-template-card
+        view_layout:
+          grid-area: close
+        icon: mdi:close-circle-outline
+        primary_info: none
+        secondary_info: none
+        tap_action:
+          action: navigate
+          navigation_path: /lovelace/default_view
+        card_mod:
+          style: |
+            ha-card {
+              width: 58px;
+              height: 58px;
+              margin: 16px auto 0;
+              border-radius: 50%;
+              background: rgba(18, 28, 78, .46);
+              border: 0;
+              box-shadow: none;
+              --icon-size: 30px;
+              --card-mod-icon-color: rgb(42, 169, 255);
+            }
+
+      - type: markdown
+        view_layout:
+          grid-area: divider
+        content: " "
+        card_mod:
+          style: |
+            ha-card {
+              height: 1px;
+              min-height: 1px;
+              padding: 0;
+              background: rgba(145, 163, 218, .26);
+              border: 0;
+              box-shadow: none;
+            }
+
+      # Linke Sidebar der Startseite: Wetter und Kalender. Auf Raumseiten kann dieser Bereich andere Cards bekommen.
+      - type: vertical-stack
+        view_layout:
+          grid-area: sidebar
+        cards:
+          - type: weather-forecast
+            entity: weather.forecast_home
+            name: Wetter
+            forecast_type: daily
+            show_forecast: false
+            card_mod:
+              style: &glass_card |
+                ha-card {
+                  border-radius: 18px;
+                  padding: 8px;
+                  background: rgba(13, 20, 60, .62);
+                  border: 1px solid rgba(156, 171, 218, .18);
+                  box-shadow: 0 18px 55px rgba(0,0,0,.22);
+                  color: rgba(255,255,255,.82);
+                }
+          - type: calendar
+            entities:
+              - calendar.home
+            title: Kalender
+            initial_view: listWeek
+            card_mod:
+              style: *glass_card
+
+      # Zentraler Grundriss: Bildkarte mit frei verschiebbaren Mushroom Cards als Elemente.
+      - type: picture-elements
+        view_layout:
+          grid-area: floorplan
+        image: /hacsfiles/sp-dashboard/floorplan-placeholder.svg
+        card_mod:
+          style: |
+            ha-card {
+              max-width: 920px;
+              margin: 16px auto 0;
+              background: rgba(8, 16, 50, .34);
+              border: 0;
+              box-shadow: 0 28px 90px rgba(0,0,0,.28);
+              overflow: visible;
+            }
+        elements:
+          - type: custom:mushroom-light-card
+            entity: light.buero
+            name: Büro Licht
+            layout: horizontal
+            primary_info: name
+            secondary_info: none
+            style: &floorplan_card_pos
+              top: 10%
+              left: 68%
+              width: 160px
+            card_mod:
+              style: &floorplan_chip |
+                ha-card {
+                  border-radius: 999px;
+                  background: rgba(12, 18, 48, .72);
+                  border: 1px solid rgba(170, 184, 230, .22);
+                  box-shadow: 0 10px 28px rgba(0,0,0,.24);
+                  --icon-size: 24px;
+                  --card-primary-font-size: 12px;
+                  --card-primary-font-weight: 700;
+                  color: rgba(255,255,255,.78);
+                }
+          - type: custom:mushroom-light-card
+            entity: light.schlafzimmer
+            name: Schlafzimmer Licht
+            layout: horizontal
+            primary_info: name
+            secondary_info: none
+            style:
+              top: 67%
+              left: 30%
+              width: 190px
+            card_mod:
+              style: *floorplan_chip
+          - type: custom:mushroom-light-card
+            entity: light.wohnzimmer
+            name: Wohnzimmer Licht
+            layout: horizontal
+            primary_info: name
+            secondary_info: none
+            style:
+              top: 67%
+              left: 82%
+              width: 190px
+            card_mod:
+              style: *floorplan_chip
+          - type: custom:mushroom-template-card
+            entity: sensor.kueche_temperatur
+            icon: mdi:thermometer
+            primary: Küche
+            secondary: Temperatur
+            layout: horizontal
+            style:
+              top: 49%
+              left: 84%
+              width: 170px
+            card_mod:
+              style: *floorplan_chip
+          - type: custom:mushroom-template-card
+            entity: switch.neue_entitaet
+            icon: mdi:gesture-tap-button
+            primary: Neue Entität
+            secondary: ''
+            layout: horizontal
+            style:
+              top: 47%
+              left: 57%
+              width: 180px
+            card_mod:
+              style: *floorplan_chip
+          - type: custom:mushroom-template-card
+            entity: sensor.home_humidity
+            icon: mdi:water-percent
+            primary: "{{ states(entity) }}"
+            secondary: ''
+            layout: horizontal
+            style:
+              top: 10%
+              left: 42%
+              width: 140px
+            card_mod:
+              style: *floorplan_chip
+
+      # Bottom-Navigation als Mushroom Chips. Spätere Raumseiten können hier ergänzt werden.
+      - type: custom:mushroom-chips-card
+        view_layout:
+          grid-area: nav
+        alignment: center
+        chips:
+          - type: template
+            icon: mdi:home
+            content: Startseite
+            tap_action:
+              action: navigate
+              navigation_path: /lovelace/startseite
+          - type: template
+            icon: mdi:rocket-launch
+            content: Übersicht
+            tap_action:
+              action: navigate
+              navigation_path: /lovelace/uebersicht
+          - type: template
+            icon: mdi:heat-wave
+            content: Klima
+            tap_action:
+              action: navigate
+              navigation_path: /lovelace/klima
+          - type: template
+            icon: mdi:lightbulb-on-outline
+            content: Lichter
+            tap_action:
+              action: navigate
+              navigation_path: /lovelace/lichter
+          - type: template
+            icon: mdi:flash
+            content: Strom
+            tap_action:
+              action: navigate
+              navigation_path: /lovelace/strom
+          - type: template
+            icon: mdi:shield-home-outline
+            content: Sicherheit
+            tap_action:
+              action: navigate
+              navigation_path: /lovelace/sicherheit
+          - type: template
+            icon: mdi:cog-outline
+            content: System
+            tap_action:
+              action: navigate
+              navigation_path: /lovelace/system
+        card_mod:
+          style: |
+            ha-card {
+              width: min(860px, calc(100vw - 48px));
+              margin: 0 auto;
+              padding: 12px 26px;
+              border-radius: 28px 28px 0 0;
+              background: rgba(26, 35, 90, .78);
+              border: 1px solid rgba(156, 171, 218, .12);
+              box-shadow: 0 -18px 60px rgba(0,0,0,.22);
+              --chip-background: transparent;
+              --chip-box-shadow: none;
+              --chip-border-width: 0;
+              --chip-height: 58px;
+              --chip-font-size: 11px;
+              --chip-icon-size: 24px;
+              --primary-text-color: rgba(255,255,255,.70);
+            }
