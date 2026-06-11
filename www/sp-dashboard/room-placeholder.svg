@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1003 924" role="img" aria-label="Raumbild Platzhalter">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#101c55"/>
+      <stop offset="1" stop-color="#071034"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="34%" r="58%">
+      <stop offset="0" stop-color="#2aa9ff" stop-opacity=".22"/>
+      <stop offset="1" stop-color="#2aa9ff" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse">
+      <path d="M48 0H0v48" fill="none" stroke="#9cabda" stroke-opacity=".08" stroke-width="1"/>
+    </pattern>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="18" stdDeviation="26" flood-color="#000" flood-opacity=".35"/>
+    </filter>
+  </defs>
+  <rect width="1003" height="924" rx="28" fill="url(#bg)"/>
+  <rect width="1003" height="924" rx="28" fill="url(#glow)"/>
+  <rect width="1003" height="924" rx="28" fill="url(#grid)"/>
+  <g filter="url(#shadow)">
+    <rect x="136" y="120" width="731" height="584" rx="34" fill="#0d1749" fill-opacity=".58" stroke="#9cabda" stroke-opacity=".18" stroke-width="2"/>
+    <path d="M226 612V306h552v306" fill="none" stroke="#f4f6ff" stroke-opacity=".26" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M226 306l276-150 276 150" fill="none" stroke="#2aa9ff" stroke-opacity=".62" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="306" y="396" width="148" height="216" rx="8" fill="#14245b" stroke="#f4f6ff" stroke-opacity=".25" stroke-width="8"/>
+    <rect x="550" y="396" width="148" height="130" rx="8" fill="#14245b" stroke="#f4f6ff" stroke-opacity=".25" stroke-width="8"/>
+  </g>
+  <text x="501.5" y="778" text-anchor="middle" fill="#f4f6ff" fill-opacity=".82" font-family="Inter, Arial, sans-serif" font-size="44" font-weight="800" letter-spacing="6">RAUMBILD</text>
+  <text x="501.5" y="826" text-anchor="middle" fill="#9cabda" fill-opacity=".72" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="600">Dieses Bild kann je Raum ersetzt werden</text>
+</svg>

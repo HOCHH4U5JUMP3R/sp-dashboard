@@ -1,6 +1,6 @@
 # SP Home-Assistant Dashboard
 
-Dieses Repository enthält eine HACS-kompatible **Dashboard**-Installation für die Startseite eines dunklen Home-Assistant Dashboards im Stil des bereitgestellten Screenshots. Die aktuelle Startseite ist auf das iPad-Air-2020-Querformat mit 1024 × 768 CSS-Pixeln optimiert und soll ohne Scrollen auf einen Bildschirm passen.
+Dieses Repository enthält eine HACS-kompatible **Dashboard**-Installation für die Startseite eines dunklen Home-Assistant Dashboards im Stil des bereitgestellten Screenshots. Die aktuelle Startseite ist auf das iPad-Air-2020-Querformat mit 1024 × 768 CSS-Pixeln optimiert und soll ohne Scrollen auf einen Bildschirm passen. Zusätzlich enthält die Vorlage Raumseiten und Detailseiten, ohne das bestehende Startseitenraster zu verändern.
 
 ## Direkt über HACS installieren
 
@@ -26,12 +26,14 @@ Dieses Repository enthält eine HACS-kompatible **Dashboard**-Installation für 
 - `dist/startseite.yaml` – Startseitenvorlage mit `/hacsfiles/sp-dashboard/...` Pfaden.
 - `dist/floorplan.svg` – über HACS ausgelieferter Floorplan für die Image-/Picture-Elements-Karte.
 - `dist/floorplan-placeholder.svg` – Kompatibilitätskopie des ursprünglichen Platzhalter-Grundrisses.
+- `dist/room-placeholder.svg` – Platzhalterbild für die neuen Raumseiten, das je Raum ersetzt werden kann.
 
 Zusätzlich bleiben die manuellen Quellen erhalten:
 
 - `dashboards/startseite.yaml` – Lovelace Raw-Konfiguration mit `/local/...` Pfad für manuelle Installationen.
 - `www/sp-dashboard/floorplan.svg` – Floorplan für manuelle Installationen unter `config/www/`.
 - `www/sp-dashboard/floorplan-placeholder.svg` – Kompatibilitätskopie des ursprünglichen Platzhalter-Grundrisses.
+- `www/sp-dashboard/room-placeholder.svg` – Platzhalterbild für manuelle Raumseiten-Installationen.
 
 ## Voraussetzungen
 
@@ -54,8 +56,18 @@ Die Startseite nutzt ein kompaktes Grid mit 300 px Sidebar, einer 96 px hohen un
 - Kopfzeile mittig: dynamische Titelkarte als reiner Text ohne Rahmen/Kasten.
 - Linke Sidebar: Wetter- und Kalenderkarte nur für die Startseite.
 - Mitte: Floorplan als `picture-elements` Image-Karte mit `1003 / 924` Seitenverhältnis und frei positionierbaren Mushroom Cards.
-- Auf dem Floorplan: anpassbare transparente Raumflächen für Wohnzimmer, Küche, Büro, Schlafzimmer und Flur.
-- Unten: kompakte Navigationsleiste mit Mushroom Chips für spätere Bereiche und Raumseiten.
+- Auf dem Floorplan: anpassbare transparente Raumflächen für Wohnzimmer, Küche, Büro, Bad, Schlafzimmer und Flur.
+- Unten: kompakte Navigationsleiste mit Mushroom Chips für Startseite, Übersicht, Klima, Lichter, Strom, Sicherheit, Server und System.
+
+## Raum- und Detailseiten
+
+Die Vorlage enthält neben der unveränderten Startseite zusätzliche Views:
+
+- Wohnungsweite Detailseiten: `/lovelace/uebersicht`, `/lovelace/klima`, `/lovelace/lichter`, `/lovelace/strom`, `/lovelace/sicherheit`, `/lovelace/server` und `/lovelace/system`.
+- Raumübersichten: `/lovelace/buero`, `/lovelace/schlafzimmer`, `/lovelace/wohnzimmer`, `/lovelace/kueche`, `/lovelace/bad` und `/lovelace/flur`.
+- Pro Raum jeweils die gleichen Detailbereiche, z. B. `/lovelace/buero-uebersicht`, `/lovelace/buero-klima`, `/lovelace/buero-lichter`, `/lovelace/buero-strom`, `/lovelace/buero-sicherheit`, `/lovelace/buero-server` und `/lovelace/buero-system`.
+
+Alle diese Views verwenden das gleiche Kopfzeilen-, Sidebar- und Bottom-Menü-Raster wie die Startseite. Auf den Raumübersichten ersetzt `room-placeholder.svg` den Floorplan innerhalb einer `picture-elements` Karte, sodass dort wieder frei positionierbare Mushroom Cards liegen können. Das Bild kann pro Raum im jeweiligen `image:` Feld gegen ein eigenes Foto, Renderbild oder SVG ausgetauscht werden.
 
 ## Raumflächen anpassen
 
@@ -86,6 +98,7 @@ Passe nach dem Einfügen der Vorlage diese Beispiel-Entitäten an deine Installa
 - `calendar.home`
 - `light.buero`, `light.schlafzimmer`, `light.wohnzimmer`
 - `sensor.kueche_temperatur`, `sensor.home_humidity`
+- neue Platzhalter wie `sensor.buero_temperatur`, `binary_sensor.buero_fenster`, `sensor.home_power`, `sensor.server_status` und die entsprechenden Raumvarianten
 
 ## Anpassung der Mushroom Cards
 
