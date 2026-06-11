@@ -11,8 +11,8 @@ views:
     type: custom:grid-layout
     layout:
       # Optimiert für iPad Air 2020 Querformat: 1024 × 768 CSS-Pixel.
-      grid-template-columns: 300px minmax(0, 1fr) 54px
-      grid-template-rows: 96px 1px minmax(0, 1fr) 64px
+      grid-template-columns: 350px minmax(0, 1fr) 54px
+      grid-template-rows: 60px 1px minmax(0, 1fr) 64px
       grid-template-areas: |
         "presence title close"
         "divider divider divider"
@@ -60,28 +60,15 @@ views:
               padding: 0;
             }
         cards:
-          - type: markdown
-            content: "**ANWESENHEIT**"
-            card_mod:
-              style: |
-                ha-card {
-                  color: rgba(255,255,255,.58);
-                  background: transparent;
-                  box-shadow: none;
-                  border: 0;
-                  font-size: 12px;
-                  letter-spacing: .08em;
-                  padding: 0 0 8px 0;
-                }
           - type: horizontal-stack
             cards:
               - type: custom:mushroom-person-card
                 entity: person.person_1
-                name: Person 1
-                icon_type: icon
-                primary_info: none
-                secondary_info: none
-                layout: vertical
+                layout: horizontal
+                fill_container: false
+                icon_type: entity-picture
+                primary_info: name
+                secondary_info: state
                 card_mod:
                   style: &person_chip_style |
                     ha-card {
@@ -97,11 +84,11 @@ views:
                     }
               - type: custom:mushroom-person-card
                 entity: person.person_2
-                name: Person 2
-                icon_type: icon
-                primary_info: none
-                secondary_info: none
-                layout: vertical
+                layout: horizontal
+                fill_container: false
+                icon_type: entity-picture
+                primary_info: name
+                secondary_info: state
                 card_mod:
                   style: *person_chip_style
 
@@ -224,7 +211,7 @@ views:
         elements:
           # Anpassbare Raumflächen: Größe/Position ändern und später auf Raumseiten verlinken.
           - type: custom:mushroom-template-card
-            primary: ''
+            primary: Wohnzimmer
             secondary: ''
             icon: none
             tap_action:
@@ -233,10 +220,10 @@ views:
             hold_action:
               action: more-info
             style: &room_area_wohnzimmer
-              top: 70%
-              left: 72%
-              width: 31%
-              height: 27%
+              top: 79.2%
+              left: 70%
+              width: 53.6%
+              height: 37.6%
               transform: translate(-50%, -50%)
               z-index: 1
             card_mod:
@@ -247,7 +234,7 @@ views:
                   cursor: pointer;
                   background: rgba(42, 169, 255, .035);
                   border: 1px dashed rgba(42, 169, 255, .22);
-                  border-radius: 12px;
+                  border-radius: 0px;
                   box-shadow: none;
                 }
                 ha-card:hover {
@@ -255,7 +242,7 @@ views:
                   border-color: rgba(42, 169, 255, .55);
                 }
           - type: custom:mushroom-template-card
-            primary: ''
+            primary: Küche
             secondary: ''
             icon: none
             tap_action:
@@ -264,16 +251,16 @@ views:
             hold_action:
               action: more-info
             style:
-              top: 41%
-              left: 73%
-              width: 31%
+              top: 47.5%
+              left: 76.6%
+              width: 40.3%
               height: 22%
               transform: translate(-50%, -50%)
               z-index: 1
             card_mod:
               style: *room_area_style
           - type: custom:mushroom-template-card
-            primary: ''
+            primary: Büro
             secondary: ''
             icon: none
             tap_action:
@@ -282,16 +269,16 @@ views:
             hold_action:
               action: more-info
             style:
-              top: 20%
-              left: 69%
-              width: 34%
-              height: 26%
+              top: 19.2%
+              left: 73%
+              width: 48%
+              height: 32.2%
               transform: translate(-50%, -50%)
               z-index: 1
             card_mod:
               style: *room_area_style
           - type: custom:mushroom-template-card
-            primary: ''
+            primary: Bad
             secondary: ''
             icon: none
             tap_action:
@@ -300,16 +287,16 @@ views:
             hold_action:
               action: more-info
             style:
-              top: 20%
-              left: 25%
-              width: 29%
-              height: 26%
+              top: 35.5%
+              left: 16.3%
+              width: 28.5%
+              height: 23%
               transform: translate(-50%, -50%)
               z-index: 1
             card_mod:
               style: *room_area_style
           - type: custom:mushroom-template-card
-            primary: ''
+            primary: Schlafzimmer
             secondary: ''
             icon: none
             tap_action:
@@ -318,16 +305,16 @@ views:
             hold_action:
               action: more-info
             style:
-              top: 69%
-              left: 27%
-              width: 29%
-              height: 27%
+              top: 79.2%
+              left: 21.8%
+              width: 39.5%
+              height: 37.8%
               transform: translate(-50%, -50%)
               z-index: 1
             card_mod:
               style: *room_area_style
           - type: custom:mushroom-template-card
-            primary: ''
+            primary: Flur
             secondary: ''
             icon: none
             tap_action:
@@ -336,10 +323,10 @@ views:
             hold_action:
               action: more-info
             style:
-              top: 44%
-              left: 42%
-              width: 19%
-              height: 21%
+              top: 30.7%
+              left: 39.8%
+              width: 16.2%
+              height: 55.2%
               transform: translate(-50%, -50%)
               z-index: 1
             card_mod:
@@ -351,8 +338,8 @@ views:
             primary_info: name
             secondary_info: none
             style: &floorplan_card_pos
-              top: 10%
-              left: 68%
+              top: 19%
+              left: 74%
               width: 140px
               z-index: 2
             card_mod:
@@ -516,8 +503,8 @@ views:
     type: custom:grid-layout
     layout:
       # Gleiche Rasterstruktur wie die Startseite; nur Karten und Navigation werden je Seite angepasst.
-      grid-template-columns: 300px minmax(0, 1fr) 54px
-      grid-template-rows: 96px 1px minmax(0, 1fr) 64px
+      grid-template-columns: 350px minmax(0, 1fr) 54px
+      grid-template-rows: 60px 1px minmax(0, 1fr) 64px
       grid-template-areas: |
         "presence title close"
         "divider divider divider"
@@ -564,37 +551,24 @@ views:
               padding: 0;
             }
         cards:
-          - type: markdown
-            content: "**ANWESENHEIT**"
-            card_mod:
-              style: |
-                ha-card {
-                  color: rgba(255,255,255,.58);
-                  background: transparent;
-                  box-shadow: none;
-                  border: 0;
-                  font-size: 12px;
-                  letter-spacing: .08em;
-                  padding: 0 0 8px 0;
-                }
           - type: horizontal-stack
             cards:
               - type: custom:mushroom-person-card
                 entity: person.person_1
-                name: Person 1
-                icon_type: icon
-                primary_info: none
-                secondary_info: none
-                layout: vertical
+                layout: horizontal
+                fill_container: false
+                icon_type: entity-picture
+                primary_info: name
+                secondary_info: state
                 card_mod:
                   style: *person_chip_style
               - type: custom:mushroom-person-card
                 entity: person.person_2
-                name: Person 2
-                icon_type: icon
-                primary_info: none
-                secondary_info: none
-                layout: vertical
+                layout: horizontal
+                fill_container: false
+                icon_type: entity-picture
+                primary_info: name
+                secondary_info: state
                 card_mod:
                   style: *person_chip_style
       - type: custom:mushroom-template-card
@@ -810,8 +784,8 @@ views:
     type: custom:grid-layout
     layout:
       # Gleiche Rasterstruktur wie die Startseite; nur Karten und Navigation werden je Seite angepasst.
-      grid-template-columns: 300px minmax(0, 1fr) 54px
-      grid-template-rows: 96px 1px minmax(0, 1fr) 64px
+      grid-template-columns: 350px minmax(0, 1fr) 54px
+      grid-template-rows: 60px 1px minmax(0, 1fr) 64px
       grid-template-areas: |
         "presence title close"
         "divider divider divider"
@@ -858,37 +832,24 @@ views:
               padding: 0;
             }
         cards:
-          - type: markdown
-            content: "**ANWESENHEIT**"
-            card_mod:
-              style: |
-                ha-card {
-                  color: rgba(255,255,255,.58);
-                  background: transparent;
-                  box-shadow: none;
-                  border: 0;
-                  font-size: 12px;
-                  letter-spacing: .08em;
-                  padding: 0 0 8px 0;
-                }
           - type: horizontal-stack
             cards:
               - type: custom:mushroom-person-card
                 entity: person.person_1
-                name: Person 1
-                icon_type: icon
-                primary_info: none
-                secondary_info: none
-                layout: vertical
+                layout: horizontal
+                fill_container: false
+                icon_type: entity-picture
+                primary_info: name
+                secondary_info: state
                 card_mod:
                   style: *person_chip_style
               - type: custom:mushroom-person-card
                 entity: person.person_2
-                name: Person 2
-                icon_type: icon
-                primary_info: none
-                secondary_info: none
-                layout: vertical
+                layout: horizontal
+                fill_container: false
+                icon_type: entity-picture
+                primary_info: name
+                secondary_info: state
                 card_mod:
                   style: *person_chip_style
       - type: custom:mushroom-template-card
@@ -1104,8 +1065,8 @@ views:
     type: custom:grid-layout
     layout:
       # Gleiche Rasterstruktur wie die Startseite; nur Karten und Navigation werden je Seite angepasst.
-      grid-template-columns: 300px minmax(0, 1fr) 54px
-      grid-template-rows: 96px 1px minmax(0, 1fr) 64px
+      grid-template-columns: 350px minmax(0, 1fr) 54px
+      grid-template-rows: 60px 1px minmax(0, 1fr) 64px
       grid-template-areas: |
         "presence title close"
         "divider divider divider"
@@ -1152,37 +1113,24 @@ views:
               padding: 0;
             }
         cards:
-          - type: markdown
-            content: "**ANWESENHEIT**"
-            card_mod:
-              style: |
-                ha-card {
-                  color: rgba(255,255,255,.58);
-                  background: transparent;
-                  box-shadow: none;
-                  border: 0;
-                  font-size: 12px;
-                  letter-spacing: .08em;
-                  padding: 0 0 8px 0;
-                }
           - type: horizontal-stack
             cards:
               - type: custom:mushroom-person-card
                 entity: person.person_1
-                name: Person 1
-                icon_type: icon
-                primary_info: none
-                secondary_info: none
-                layout: vertical
+                layout: horizontal
+                fill_container: false
+                icon_type: entity-picture
+                primary_info: name
+                secondary_info: state
                 card_mod:
                   style: *person_chip_style
               - type: custom:mushroom-person-card
                 entity: person.person_2
-                name: Person 2
-                icon_type: icon
-                primary_info: none
-                secondary_info: none
-                layout: vertical
+                layout: horizontal
+                fill_container: false
+                icon_type: entity-picture
+                primary_info: name
+                secondary_info: state
                 card_mod:
                   style: *person_chip_style
       - type: custom:mushroom-template-card
@@ -1397,8 +1345,8 @@ views:
     type: custom:grid-layout
     layout:
       # Gleiche Rasterstruktur wie die Startseite; nur Karten und Navigation werden je Seite angepasst.
-      grid-template-columns: 300px minmax(0, 1fr) 54px
-      grid-template-rows: 96px 1px minmax(0, 1fr) 64px
+      grid-template-columns: 350px minmax(0, 1fr) 54px
+      grid-template-rows: 60px 1px minmax(0, 1fr) 64px
       grid-template-areas: |
         "presence title close"
         "divider divider divider"
@@ -1445,37 +1393,24 @@ views:
               padding: 0;
             }
         cards:
-          - type: markdown
-            content: "**ANWESENHEIT**"
-            card_mod:
-              style: |
-                ha-card {
-                  color: rgba(255,255,255,.58);
-                  background: transparent;
-                  box-shadow: none;
-                  border: 0;
-                  font-size: 12px;
-                  letter-spacing: .08em;
-                  padding: 0 0 8px 0;
-                }
           - type: horizontal-stack
             cards:
               - type: custom:mushroom-person-card
                 entity: person.person_1
-                name: Person 1
-                icon_type: icon
-                primary_info: none
-                secondary_info: none
-                layout: vertical
+                layout: horizontal
+                fill_container: false
+                icon_type: entity-picture
+                primary_info: name
+                secondary_info: state
                 card_mod:
                   style: *person_chip_style
               - type: custom:mushroom-person-card
                 entity: person.person_2
-                name: Person 2
-                icon_type: icon
-                primary_info: none
-                secondary_info: none
-                layout: vertical
+                layout: horizontal
+                fill_container: false
+                icon_type: entity-picture
+                primary_info: name
+                secondary_info: state
                 card_mod:
                   style: *person_chip_style
       - type: custom:mushroom-template-card
@@ -1691,8 +1626,8 @@ views:
     type: custom:grid-layout
     layout:
       # Gleiche Rasterstruktur wie die Startseite; nur Karten und Navigation werden je Seite angepasst.
-      grid-template-columns: 300px minmax(0, 1fr) 54px
-      grid-template-rows: 96px 1px minmax(0, 1fr) 64px
+      grid-template-columns: 350px minmax(0, 1fr) 54px
+      grid-template-rows: 60px 1px minmax(0, 1fr) 64px
       grid-template-areas: |
         "presence title close"
         "divider divider divider"
@@ -1739,37 +1674,24 @@ views:
               padding: 0;
             }
         cards:
-          - type: markdown
-            content: "**ANWESENHEIT**"
-            card_mod:
-              style: |
-                ha-card {
-                  color: rgba(255,255,255,.58);
-                  background: transparent;
-                  box-shadow: none;
-                  border: 0;
-                  font-size: 12px;
-                  letter-spacing: .08em;
-                  padding: 0 0 8px 0;
-                }
           - type: horizontal-stack
             cards:
               - type: custom:mushroom-person-card
                 entity: person.person_1
-                name: Person 1
-                icon_type: icon
-                primary_info: none
-                secondary_info: none
-                layout: vertical
+                layout: horizontal
+                fill_container: false
+                icon_type: entity-picture
+                primary_info: name
+                secondary_info: state
                 card_mod:
                   style: *person_chip_style
               - type: custom:mushroom-person-card
                 entity: person.person_2
-                name: Person 2
-                icon_type: icon
-                primary_info: none
-                secondary_info: none
-                layout: vertical
+                layout: horizontal
+                fill_container: false
+                icon_type: entity-picture
+                primary_info: name
+                secondary_info: state
                 card_mod:
                   style: *person_chip_style
       - type: custom:mushroom-template-card
@@ -1985,8 +1907,8 @@ views:
     type: custom:grid-layout
     layout:
       # Gleiche Rasterstruktur wie die Startseite; nur Karten und Navigation werden je Seite angepasst.
-      grid-template-columns: 300px minmax(0, 1fr) 54px
-      grid-template-rows: 96px 1px minmax(0, 1fr) 64px
+      grid-template-columns: 350px minmax(0, 1fr) 54px
+      grid-template-rows: 60px 1px minmax(0, 1fr) 64px
       grid-template-areas: |
         "presence title close"
         "divider divider divider"
@@ -2033,37 +1955,24 @@ views:
               padding: 0;
             }
         cards:
-          - type: markdown
-            content: "**ANWESENHEIT**"
-            card_mod:
-              style: |
-                ha-card {
-                  color: rgba(255,255,255,.58);
-                  background: transparent;
-                  box-shadow: none;
-                  border: 0;
-                  font-size: 12px;
-                  letter-spacing: .08em;
-                  padding: 0 0 8px 0;
-                }
           - type: horizontal-stack
             cards:
               - type: custom:mushroom-person-card
                 entity: person.person_1
-                name: Person 1
-                icon_type: icon
-                primary_info: none
-                secondary_info: none
-                layout: vertical
+                layout: horizontal
+                fill_container: false
+                icon_type: entity-picture
+                primary_info: name
+                secondary_info: state
                 card_mod:
                   style: *person_chip_style
               - type: custom:mushroom-person-card
                 entity: person.person_2
-                name: Person 2
-                icon_type: icon
-                primary_info: none
-                secondary_info: none
-                layout: vertical
+                layout: horizontal
+                fill_container: false
+                icon_type: entity-picture
+                primary_info: name
+                secondary_info: state
                 card_mod:
                   style: *person_chip_style
       - type: custom:mushroom-template-card
@@ -2279,8 +2188,8 @@ views:
     type: custom:grid-layout
     layout:
       # Gleiche Rasterstruktur wie die Startseite; nur Karten und Navigation werden je Seite angepasst.
-      grid-template-columns: 300px minmax(0, 1fr) 54px
-      grid-template-rows: 96px 1px minmax(0, 1fr) 64px
+      grid-template-columns: 350px minmax(0, 1fr) 54px
+      grid-template-rows: 60px 1px minmax(0, 1fr) 64px
       grid-template-areas: |
         "presence title close"
         "divider divider divider"
@@ -2327,37 +2236,24 @@ views:
               padding: 0;
             }
         cards:
-          - type: markdown
-            content: "**ANWESENHEIT**"
-            card_mod:
-              style: |
-                ha-card {
-                  color: rgba(255,255,255,.58);
-                  background: transparent;
-                  box-shadow: none;
-                  border: 0;
-                  font-size: 12px;
-                  letter-spacing: .08em;
-                  padding: 0 0 8px 0;
-                }
           - type: horizontal-stack
             cards:
               - type: custom:mushroom-person-card
                 entity: person.person_1
-                name: Person 1
-                icon_type: icon
-                primary_info: none
-                secondary_info: none
-                layout: vertical
+                layout: horizontal
+                fill_container: false
+                icon_type: entity-picture
+                primary_info: name
+                secondary_info: state
                 card_mod:
                   style: *person_chip_style
               - type: custom:mushroom-person-card
                 entity: person.person_2
-                name: Person 2
-                icon_type: icon
-                primary_info: none
-                secondary_info: none
-                layout: vertical
+                layout: horizontal
+                fill_container: false
+                icon_type: entity-picture
+                primary_info: name
+                secondary_info: state
                 card_mod:
                   style: *person_chip_style
       - type: custom:mushroom-template-card
@@ -2573,8 +2469,8 @@ views:
     type: custom:grid-layout
     layout:
       # Gleiche Rasterstruktur wie die Startseite; nur Karten und Navigation werden je Seite angepasst.
-      grid-template-columns: 300px minmax(0, 1fr) 54px
-      grid-template-rows: 96px 1px minmax(0, 1fr) 64px
+      grid-template-columns: 350px minmax(0, 1fr) 54px
+      grid-template-rows: 60px 1px minmax(0, 1fr) 64px
       grid-template-areas: |
         "presence title close"
         "divider divider divider"
@@ -2621,37 +2517,24 @@ views:
               padding: 0;
             }
         cards:
-          - type: markdown
-            content: "**ANWESENHEIT**"
-            card_mod:
-              style: |
-                ha-card {
-                  color: rgba(255,255,255,.58);
-                  background: transparent;
-                  box-shadow: none;
-                  border: 0;
-                  font-size: 12px;
-                  letter-spacing: .08em;
-                  padding: 0 0 8px 0;
-                }
           - type: horizontal-stack
             cards:
               - type: custom:mushroom-person-card
                 entity: person.person_1
-                name: Person 1
-                icon_type: icon
-                primary_info: none
-                secondary_info: none
-                layout: vertical
+                layout: horizontal
+                fill_container: false
+                icon_type: entity-picture
+                primary_info: name
+                secondary_info: state
                 card_mod:
                   style: *person_chip_style
               - type: custom:mushroom-person-card
                 entity: person.person_2
-                name: Person 2
-                icon_type: icon
-                primary_info: none
-                secondary_info: none
-                layout: vertical
+                layout: horizontal
+                fill_container: false
+                icon_type: entity-picture
+                primary_info: name
+                secondary_info: state
                 card_mod:
                   style: *person_chip_style
       - type: custom:mushroom-template-card
@@ -2894,8 +2777,8 @@ views:
     type: custom:grid-layout
     layout:
       # Gleiche Rasterstruktur wie die Startseite; nur Karten und Navigation werden je Seite angepasst.
-      grid-template-columns: 300px minmax(0, 1fr) 54px
-      grid-template-rows: 96px 1px minmax(0, 1fr) 64px
+      grid-template-columns: 350px minmax(0, 1fr) 54px
+      grid-template-rows: 60px 1px minmax(0, 1fr) 64px
       grid-template-areas: |
         "presence title close"
         "divider divider divider"
@@ -2942,37 +2825,24 @@ views:
               padding: 0;
             }
         cards:
-          - type: markdown
-            content: "**ANWESENHEIT**"
-            card_mod:
-              style: |
-                ha-card {
-                  color: rgba(255,255,255,.58);
-                  background: transparent;
-                  box-shadow: none;
-                  border: 0;
-                  font-size: 12px;
-                  letter-spacing: .08em;
-                  padding: 0 0 8px 0;
-                }
           - type: horizontal-stack
             cards:
               - type: custom:mushroom-person-card
                 entity: person.person_1
-                name: Person 1
-                icon_type: icon
-                primary_info: none
-                secondary_info: none
-                layout: vertical
+                layout: horizontal
+                fill_container: false
+                icon_type: entity-picture
+                primary_info: name
+                secondary_info: state
                 card_mod:
                   style: *person_chip_style
               - type: custom:mushroom-person-card
                 entity: person.person_2
-                name: Person 2
-                icon_type: icon
-                primary_info: none
-                secondary_info: none
-                layout: vertical
+                layout: horizontal
+                fill_container: false
+                icon_type: entity-picture
+                primary_info: name
+                secondary_info: state
                 card_mod:
                   style: *person_chip_style
       - type: custom:mushroom-template-card
@@ -3188,8 +3058,8 @@ views:
     type: custom:grid-layout
     layout:
       # Gleiche Rasterstruktur wie die Startseite; nur Karten und Navigation werden je Seite angepasst.
-      grid-template-columns: 300px minmax(0, 1fr) 54px
-      grid-template-rows: 96px 1px minmax(0, 1fr) 64px
+      grid-template-columns: 350px minmax(0, 1fr) 54px
+      grid-template-rows: 60px 1px minmax(0, 1fr) 64px
       grid-template-areas: |
         "presence title close"
         "divider divider divider"
@@ -3236,37 +3106,24 @@ views:
               padding: 0;
             }
         cards:
-          - type: markdown
-            content: "**ANWESENHEIT**"
-            card_mod:
-              style: |
-                ha-card {
-                  color: rgba(255,255,255,.58);
-                  background: transparent;
-                  box-shadow: none;
-                  border: 0;
-                  font-size: 12px;
-                  letter-spacing: .08em;
-                  padding: 0 0 8px 0;
-                }
           - type: horizontal-stack
             cards:
               - type: custom:mushroom-person-card
                 entity: person.person_1
-                name: Person 1
-                icon_type: icon
-                primary_info: none
-                secondary_info: none
-                layout: vertical
+                layout: horizontal
+                fill_container: false
+                icon_type: entity-picture
+                primary_info: name
+                secondary_info: state
                 card_mod:
                   style: *person_chip_style
               - type: custom:mushroom-person-card
                 entity: person.person_2
-                name: Person 2
-                icon_type: icon
-                primary_info: none
-                secondary_info: none
-                layout: vertical
+                layout: horizontal
+                fill_container: false
+                icon_type: entity-picture
+                primary_info: name
+                secondary_info: state
                 card_mod:
                   style: *person_chip_style
       - type: custom:mushroom-template-card
@@ -3482,8 +3339,8 @@ views:
     type: custom:grid-layout
     layout:
       # Gleiche Rasterstruktur wie die Startseite; nur Karten und Navigation werden je Seite angepasst.
-      grid-template-columns: 300px minmax(0, 1fr) 54px
-      grid-template-rows: 96px 1px minmax(0, 1fr) 64px
+      grid-template-columns: 350px minmax(0, 1fr) 54px
+      grid-template-rows: 60px 1px minmax(0, 1fr) 64px
       grid-template-areas: |
         "presence title close"
         "divider divider divider"
@@ -3530,37 +3387,24 @@ views:
               padding: 0;
             }
         cards:
-          - type: markdown
-            content: "**ANWESENHEIT**"
-            card_mod:
-              style: |
-                ha-card {
-                  color: rgba(255,255,255,.58);
-                  background: transparent;
-                  box-shadow: none;
-                  border: 0;
-                  font-size: 12px;
-                  letter-spacing: .08em;
-                  padding: 0 0 8px 0;
-                }
           - type: horizontal-stack
             cards:
               - type: custom:mushroom-person-card
                 entity: person.person_1
-                name: Person 1
-                icon_type: icon
-                primary_info: none
-                secondary_info: none
-                layout: vertical
+                layout: horizontal
+                fill_container: false
+                icon_type: entity-picture
+                primary_info: name
+                secondary_info: state
                 card_mod:
                   style: *person_chip_style
               - type: custom:mushroom-person-card
                 entity: person.person_2
-                name: Person 2
-                icon_type: icon
-                primary_info: none
-                secondary_info: none
-                layout: vertical
+                layout: horizontal
+                fill_container: false
+                icon_type: entity-picture
+                primary_info: name
+                secondary_info: state
                 card_mod:
                   style: *person_chip_style
       - type: custom:mushroom-template-card
@@ -3775,8 +3619,8 @@ views:
     type: custom:grid-layout
     layout:
       # Gleiche Rasterstruktur wie die Startseite; nur Karten und Navigation werden je Seite angepasst.
-      grid-template-columns: 300px minmax(0, 1fr) 54px
-      grid-template-rows: 96px 1px minmax(0, 1fr) 64px
+      grid-template-columns: 350px minmax(0, 1fr) 54px
+      grid-template-rows: 60px 1px minmax(0, 1fr) 64px
       grid-template-areas: |
         "presence title close"
         "divider divider divider"
@@ -3823,37 +3667,24 @@ views:
               padding: 0;
             }
         cards:
-          - type: markdown
-            content: "**ANWESENHEIT**"
-            card_mod:
-              style: |
-                ha-card {
-                  color: rgba(255,255,255,.58);
-                  background: transparent;
-                  box-shadow: none;
-                  border: 0;
-                  font-size: 12px;
-                  letter-spacing: .08em;
-                  padding: 0 0 8px 0;
-                }
           - type: horizontal-stack
             cards:
               - type: custom:mushroom-person-card
                 entity: person.person_1
-                name: Person 1
-                icon_type: icon
-                primary_info: none
-                secondary_info: none
-                layout: vertical
+                layout: horizontal
+                fill_container: false
+                icon_type: entity-picture
+                primary_info: name
+                secondary_info: state
                 card_mod:
                   style: *person_chip_style
               - type: custom:mushroom-person-card
                 entity: person.person_2
-                name: Person 2
-                icon_type: icon
-                primary_info: none
-                secondary_info: none
-                layout: vertical
+                layout: horizontal
+                fill_container: false
+                icon_type: entity-picture
+                primary_info: name
+                secondary_info: state
                 card_mod:
                   style: *person_chip_style
       - type: custom:mushroom-template-card
@@ -4069,8 +3900,8 @@ views:
     type: custom:grid-layout
     layout:
       # Gleiche Rasterstruktur wie die Startseite; nur Karten und Navigation werden je Seite angepasst.
-      grid-template-columns: 300px minmax(0, 1fr) 54px
-      grid-template-rows: 96px 1px minmax(0, 1fr) 64px
+      grid-template-columns: 350px minmax(0, 1fr) 54px
+      grid-template-rows: 60px 1px minmax(0, 1fr) 64px
       grid-template-areas: |
         "presence title close"
         "divider divider divider"
@@ -4117,37 +3948,24 @@ views:
               padding: 0;
             }
         cards:
-          - type: markdown
-            content: "**ANWESENHEIT**"
-            card_mod:
-              style: |
-                ha-card {
-                  color: rgba(255,255,255,.58);
-                  background: transparent;
-                  box-shadow: none;
-                  border: 0;
-                  font-size: 12px;
-                  letter-spacing: .08em;
-                  padding: 0 0 8px 0;
-                }
           - type: horizontal-stack
             cards:
               - type: custom:mushroom-person-card
                 entity: person.person_1
-                name: Person 1
-                icon_type: icon
-                primary_info: none
-                secondary_info: none
-                layout: vertical
+                layout: horizontal
+                fill_container: false
+                icon_type: entity-picture
+                primary_info: name
+                secondary_info: state
                 card_mod:
                   style: *person_chip_style
               - type: custom:mushroom-person-card
                 entity: person.person_2
-                name: Person 2
-                icon_type: icon
-                primary_info: none
-                secondary_info: none
-                layout: vertical
+                layout: horizontal
+                fill_container: false
+                icon_type: entity-picture
+                primary_info: name
+                secondary_info: state
                 card_mod:
                   style: *person_chip_style
       - type: custom:mushroom-template-card
@@ -4363,8 +4181,8 @@ views:
     type: custom:grid-layout
     layout:
       # Gleiche Rasterstruktur wie die Startseite; nur Karten und Navigation werden je Seite angepasst.
-      grid-template-columns: 300px minmax(0, 1fr) 54px
-      grid-template-rows: 96px 1px minmax(0, 1fr) 64px
+      grid-template-columns: 350px minmax(0, 1fr) 54px
+      grid-template-rows: 60px 1px minmax(0, 1fr) 64px
       grid-template-areas: |
         "presence title close"
         "divider divider divider"
@@ -4411,37 +4229,24 @@ views:
               padding: 0;
             }
         cards:
-          - type: markdown
-            content: "**ANWESENHEIT**"
-            card_mod:
-              style: |
-                ha-card {
-                  color: rgba(255,255,255,.58);
-                  background: transparent;
-                  box-shadow: none;
-                  border: 0;
-                  font-size: 12px;
-                  letter-spacing: .08em;
-                  padding: 0 0 8px 0;
-                }
           - type: horizontal-stack
             cards:
               - type: custom:mushroom-person-card
                 entity: person.person_1
-                name: Person 1
-                icon_type: icon
-                primary_info: none
-                secondary_info: none
-                layout: vertical
+                layout: horizontal
+                fill_container: false
+                icon_type: entity-picture
+                primary_info: name
+                secondary_info: state
                 card_mod:
                   style: *person_chip_style
               - type: custom:mushroom-person-card
                 entity: person.person_2
-                name: Person 2
-                icon_type: icon
-                primary_info: none
-                secondary_info: none
-                layout: vertical
+                layout: horizontal
+                fill_container: false
+                icon_type: entity-picture
+                primary_info: name
+                secondary_info: state
                 card_mod:
                   style: *person_chip_style
       - type: custom:mushroom-template-card
@@ -4657,8 +4462,8 @@ views:
     type: custom:grid-layout
     layout:
       # Gleiche Rasterstruktur wie die Startseite; nur Karten und Navigation werden je Seite angepasst.
-      grid-template-columns: 300px minmax(0, 1fr) 54px
-      grid-template-rows: 96px 1px minmax(0, 1fr) 64px
+      grid-template-columns: 350px minmax(0, 1fr) 54px
+      grid-template-rows: 60px 1px minmax(0, 1fr) 64px
       grid-template-areas: |
         "presence title close"
         "divider divider divider"
@@ -4705,37 +4510,24 @@ views:
               padding: 0;
             }
         cards:
-          - type: markdown
-            content: "**ANWESENHEIT**"
-            card_mod:
-              style: |
-                ha-card {
-                  color: rgba(255,255,255,.58);
-                  background: transparent;
-                  box-shadow: none;
-                  border: 0;
-                  font-size: 12px;
-                  letter-spacing: .08em;
-                  padding: 0 0 8px 0;
-                }
           - type: horizontal-stack
             cards:
               - type: custom:mushroom-person-card
                 entity: person.person_1
-                name: Person 1
-                icon_type: icon
-                primary_info: none
-                secondary_info: none
-                layout: vertical
+                layout: horizontal
+                fill_container: false
+                icon_type: entity-picture
+                primary_info: name
+                secondary_info: state
                 card_mod:
                   style: *person_chip_style
               - type: custom:mushroom-person-card
                 entity: person.person_2
-                name: Person 2
-                icon_type: icon
-                primary_info: none
-                secondary_info: none
-                layout: vertical
+                layout: horizontal
+                fill_container: false
+                icon_type: entity-picture
+                primary_info: name
+                secondary_info: state
                 card_mod:
                   style: *person_chip_style
       - type: custom:mushroom-template-card
@@ -4951,8 +4743,8 @@ views:
     type: custom:grid-layout
     layout:
       # Gleiche Rasterstruktur wie die Startseite; nur Karten und Navigation werden je Seite angepasst.
-      grid-template-columns: 300px minmax(0, 1fr) 54px
-      grid-template-rows: 96px 1px minmax(0, 1fr) 64px
+      grid-template-columns: 350px minmax(0, 1fr) 54px
+      grid-template-rows: 60px 1px minmax(0, 1fr) 64px
       grid-template-areas: |
         "presence title close"
         "divider divider divider"
@@ -4999,37 +4791,24 @@ views:
               padding: 0;
             }
         cards:
-          - type: markdown
-            content: "**ANWESENHEIT**"
-            card_mod:
-              style: |
-                ha-card {
-                  color: rgba(255,255,255,.58);
-                  background: transparent;
-                  box-shadow: none;
-                  border: 0;
-                  font-size: 12px;
-                  letter-spacing: .08em;
-                  padding: 0 0 8px 0;
-                }
           - type: horizontal-stack
             cards:
               - type: custom:mushroom-person-card
                 entity: person.person_1
-                name: Person 1
-                icon_type: icon
-                primary_info: none
-                secondary_info: none
-                layout: vertical
+                layout: horizontal
+                fill_container: false
+                icon_type: entity-picture
+                primary_info: name
+                secondary_info: state
                 card_mod:
                   style: *person_chip_style
               - type: custom:mushroom-person-card
                 entity: person.person_2
-                name: Person 2
-                icon_type: icon
-                primary_info: none
-                secondary_info: none
-                layout: vertical
+                layout: horizontal
+                fill_container: false
+                icon_type: entity-picture
+                primary_info: name
+                secondary_info: state
                 card_mod:
                   style: *person_chip_style
       - type: custom:mushroom-template-card
@@ -5272,8 +5051,8 @@ views:
     type: custom:grid-layout
     layout:
       # Gleiche Rasterstruktur wie die Startseite; nur Karten und Navigation werden je Seite angepasst.
-      grid-template-columns: 300px minmax(0, 1fr) 54px
-      grid-template-rows: 96px 1px minmax(0, 1fr) 64px
+      grid-template-columns: 350px minmax(0, 1fr) 54px
+      grid-template-rows: 60px 1px minmax(0, 1fr) 64px
       grid-template-areas: |
         "presence title close"
         "divider divider divider"
@@ -5320,37 +5099,24 @@ views:
               padding: 0;
             }
         cards:
-          - type: markdown
-            content: "**ANWESENHEIT**"
-            card_mod:
-              style: |
-                ha-card {
-                  color: rgba(255,255,255,.58);
-                  background: transparent;
-                  box-shadow: none;
-                  border: 0;
-                  font-size: 12px;
-                  letter-spacing: .08em;
-                  padding: 0 0 8px 0;
-                }
           - type: horizontal-stack
             cards:
               - type: custom:mushroom-person-card
                 entity: person.person_1
-                name: Person 1
-                icon_type: icon
-                primary_info: none
-                secondary_info: none
-                layout: vertical
+                layout: horizontal
+                fill_container: false
+                icon_type: entity-picture
+                primary_info: name
+                secondary_info: state
                 card_mod:
                   style: *person_chip_style
               - type: custom:mushroom-person-card
                 entity: person.person_2
-                name: Person 2
-                icon_type: icon
-                primary_info: none
-                secondary_info: none
-                layout: vertical
+                layout: horizontal
+                fill_container: false
+                icon_type: entity-picture
+                primary_info: name
+                secondary_info: state
                 card_mod:
                   style: *person_chip_style
       - type: custom:mushroom-template-card
@@ -5566,8 +5332,8 @@ views:
     type: custom:grid-layout
     layout:
       # Gleiche Rasterstruktur wie die Startseite; nur Karten und Navigation werden je Seite angepasst.
-      grid-template-columns: 300px minmax(0, 1fr) 54px
-      grid-template-rows: 96px 1px minmax(0, 1fr) 64px
+      grid-template-columns: 350px minmax(0, 1fr) 54px
+      grid-template-rows: 60px 1px minmax(0, 1fr) 64px
       grid-template-areas: |
         "presence title close"
         "divider divider divider"
@@ -5614,37 +5380,24 @@ views:
               padding: 0;
             }
         cards:
-          - type: markdown
-            content: "**ANWESENHEIT**"
-            card_mod:
-              style: |
-                ha-card {
-                  color: rgba(255,255,255,.58);
-                  background: transparent;
-                  box-shadow: none;
-                  border: 0;
-                  font-size: 12px;
-                  letter-spacing: .08em;
-                  padding: 0 0 8px 0;
-                }
           - type: horizontal-stack
             cards:
               - type: custom:mushroom-person-card
                 entity: person.person_1
-                name: Person 1
-                icon_type: icon
-                primary_info: none
-                secondary_info: none
-                layout: vertical
+                layout: horizontal
+                fill_container: false
+                icon_type: entity-picture
+                primary_info: name
+                secondary_info: state
                 card_mod:
                   style: *person_chip_style
               - type: custom:mushroom-person-card
                 entity: person.person_2
-                name: Person 2
-                icon_type: icon
-                primary_info: none
-                secondary_info: none
-                layout: vertical
+                layout: horizontal
+                fill_container: false
+                icon_type: entity-picture
+                primary_info: name
+                secondary_info: state
                 card_mod:
                   style: *person_chip_style
       - type: custom:mushroom-template-card
@@ -5860,8 +5613,8 @@ views:
     type: custom:grid-layout
     layout:
       # Gleiche Rasterstruktur wie die Startseite; nur Karten und Navigation werden je Seite angepasst.
-      grid-template-columns: 300px minmax(0, 1fr) 54px
-      grid-template-rows: 96px 1px minmax(0, 1fr) 64px
+      grid-template-columns: 350px minmax(0, 1fr) 54px
+      grid-template-rows: 60px 1px minmax(0, 1fr) 64px
       grid-template-areas: |
         "presence title close"
         "divider divider divider"
@@ -5908,37 +5661,24 @@ views:
               padding: 0;
             }
         cards:
-          - type: markdown
-            content: "**ANWESENHEIT**"
-            card_mod:
-              style: |
-                ha-card {
-                  color: rgba(255,255,255,.58);
-                  background: transparent;
-                  box-shadow: none;
-                  border: 0;
-                  font-size: 12px;
-                  letter-spacing: .08em;
-                  padding: 0 0 8px 0;
-                }
           - type: horizontal-stack
             cards:
               - type: custom:mushroom-person-card
                 entity: person.person_1
-                name: Person 1
-                icon_type: icon
-                primary_info: none
-                secondary_info: none
-                layout: vertical
+                layout: horizontal
+                fill_container: false
+                icon_type: entity-picture
+                primary_info: name
+                secondary_info: state
                 card_mod:
                   style: *person_chip_style
               - type: custom:mushroom-person-card
                 entity: person.person_2
-                name: Person 2
-                icon_type: icon
-                primary_info: none
-                secondary_info: none
-                layout: vertical
+                layout: horizontal
+                fill_container: false
+                icon_type: entity-picture
+                primary_info: name
+                secondary_info: state
                 card_mod:
                   style: *person_chip_style
       - type: custom:mushroom-template-card
@@ -6153,8 +5893,8 @@ views:
     type: custom:grid-layout
     layout:
       # Gleiche Rasterstruktur wie die Startseite; nur Karten und Navigation werden je Seite angepasst.
-      grid-template-columns: 300px minmax(0, 1fr) 54px
-      grid-template-rows: 96px 1px minmax(0, 1fr) 64px
+      grid-template-columns: 350px minmax(0, 1fr) 54px
+      grid-template-rows: 60px 1px minmax(0, 1fr) 64px
       grid-template-areas: |
         "presence title close"
         "divider divider divider"
@@ -6201,37 +5941,24 @@ views:
               padding: 0;
             }
         cards:
-          - type: markdown
-            content: "**ANWESENHEIT**"
-            card_mod:
-              style: |
-                ha-card {
-                  color: rgba(255,255,255,.58);
-                  background: transparent;
-                  box-shadow: none;
-                  border: 0;
-                  font-size: 12px;
-                  letter-spacing: .08em;
-                  padding: 0 0 8px 0;
-                }
           - type: horizontal-stack
             cards:
               - type: custom:mushroom-person-card
                 entity: person.person_1
-                name: Person 1
-                icon_type: icon
-                primary_info: none
-                secondary_info: none
-                layout: vertical
+                layout: horizontal
+                fill_container: false
+                icon_type: entity-picture
+                primary_info: name
+                secondary_info: state
                 card_mod:
                   style: *person_chip_style
               - type: custom:mushroom-person-card
                 entity: person.person_2
-                name: Person 2
-                icon_type: icon
-                primary_info: none
-                secondary_info: none
-                layout: vertical
+                layout: horizontal
+                fill_container: false
+                icon_type: entity-picture
+                primary_info: name
+                secondary_info: state
                 card_mod:
                   style: *person_chip_style
       - type: custom:mushroom-template-card
@@ -6447,8 +6174,8 @@ views:
     type: custom:grid-layout
     layout:
       # Gleiche Rasterstruktur wie die Startseite; nur Karten und Navigation werden je Seite angepasst.
-      grid-template-columns: 300px minmax(0, 1fr) 54px
-      grid-template-rows: 96px 1px minmax(0, 1fr) 64px
+      grid-template-columns: 350px minmax(0, 1fr) 54px
+      grid-template-rows: 60px 1px minmax(0, 1fr) 64px
       grid-template-areas: |
         "presence title close"
         "divider divider divider"
@@ -6495,37 +6222,24 @@ views:
               padding: 0;
             }
         cards:
-          - type: markdown
-            content: "**ANWESENHEIT**"
-            card_mod:
-              style: |
-                ha-card {
-                  color: rgba(255,255,255,.58);
-                  background: transparent;
-                  box-shadow: none;
-                  border: 0;
-                  font-size: 12px;
-                  letter-spacing: .08em;
-                  padding: 0 0 8px 0;
-                }
           - type: horizontal-stack
             cards:
               - type: custom:mushroom-person-card
                 entity: person.person_1
-                name: Person 1
-                icon_type: icon
-                primary_info: none
-                secondary_info: none
-                layout: vertical
+                layout: horizontal
+                fill_container: false
+                icon_type: entity-picture
+                primary_info: name
+                secondary_info: state
                 card_mod:
                   style: *person_chip_style
               - type: custom:mushroom-person-card
                 entity: person.person_2
-                name: Person 2
-                icon_type: icon
-                primary_info: none
-                secondary_info: none
-                layout: vertical
+                layout: horizontal
+                fill_container: false
+                icon_type: entity-picture
+                primary_info: name
+                secondary_info: state
                 card_mod:
                   style: *person_chip_style
       - type: custom:mushroom-template-card
@@ -6741,8 +6455,8 @@ views:
     type: custom:grid-layout
     layout:
       # Gleiche Rasterstruktur wie die Startseite; nur Karten und Navigation werden je Seite angepasst.
-      grid-template-columns: 300px minmax(0, 1fr) 54px
-      grid-template-rows: 96px 1px minmax(0, 1fr) 64px
+      grid-template-columns: 350px minmax(0, 1fr) 54px
+      grid-template-rows: 60px 1px minmax(0, 1fr) 64px
       grid-template-areas: |
         "presence title close"
         "divider divider divider"
@@ -6789,37 +6503,24 @@ views:
               padding: 0;
             }
         cards:
-          - type: markdown
-            content: "**ANWESENHEIT**"
-            card_mod:
-              style: |
-                ha-card {
-                  color: rgba(255,255,255,.58);
-                  background: transparent;
-                  box-shadow: none;
-                  border: 0;
-                  font-size: 12px;
-                  letter-spacing: .08em;
-                  padding: 0 0 8px 0;
-                }
           - type: horizontal-stack
             cards:
               - type: custom:mushroom-person-card
                 entity: person.person_1
-                name: Person 1
-                icon_type: icon
-                primary_info: none
-                secondary_info: none
-                layout: vertical
+                layout: horizontal
+                fill_container: false
+                icon_type: entity-picture
+                primary_info: name
+                secondary_info: state
                 card_mod:
                   style: *person_chip_style
               - type: custom:mushroom-person-card
                 entity: person.person_2
-                name: Person 2
-                icon_type: icon
-                primary_info: none
-                secondary_info: none
-                layout: vertical
+                layout: horizontal
+                fill_container: false
+                icon_type: entity-picture
+                primary_info: name
+                secondary_info: state
                 card_mod:
                   style: *person_chip_style
       - type: custom:mushroom-template-card
@@ -7035,8 +6736,8 @@ views:
     type: custom:grid-layout
     layout:
       # Gleiche Rasterstruktur wie die Startseite; nur Karten und Navigation werden je Seite angepasst.
-      grid-template-columns: 300px minmax(0, 1fr) 54px
-      grid-template-rows: 96px 1px minmax(0, 1fr) 64px
+      grid-template-columns: 350px minmax(0, 1fr) 54px
+      grid-template-rows: 60px 1px minmax(0, 1fr) 64px
       grid-template-areas: |
         "presence title close"
         "divider divider divider"
@@ -7083,37 +6784,24 @@ views:
               padding: 0;
             }
         cards:
-          - type: markdown
-            content: "**ANWESENHEIT**"
-            card_mod:
-              style: |
-                ha-card {
-                  color: rgba(255,255,255,.58);
-                  background: transparent;
-                  box-shadow: none;
-                  border: 0;
-                  font-size: 12px;
-                  letter-spacing: .08em;
-                  padding: 0 0 8px 0;
-                }
           - type: horizontal-stack
             cards:
               - type: custom:mushroom-person-card
                 entity: person.person_1
-                name: Person 1
-                icon_type: icon
-                primary_info: none
-                secondary_info: none
-                layout: vertical
+                layout: horizontal
+                fill_container: false
+                icon_type: entity-picture
+                primary_info: name
+                secondary_info: state
                 card_mod:
                   style: *person_chip_style
               - type: custom:mushroom-person-card
                 entity: person.person_2
-                name: Person 2
-                icon_type: icon
-                primary_info: none
-                secondary_info: none
-                layout: vertical
+                layout: horizontal
+                fill_container: false
+                icon_type: entity-picture
+                primary_info: name
+                secondary_info: state
                 card_mod:
                   style: *person_chip_style
       - type: custom:mushroom-template-card
@@ -7329,8 +7017,8 @@ views:
     type: custom:grid-layout
     layout:
       # Gleiche Rasterstruktur wie die Startseite; nur Karten und Navigation werden je Seite angepasst.
-      grid-template-columns: 300px minmax(0, 1fr) 54px
-      grid-template-rows: 96px 1px minmax(0, 1fr) 64px
+      grid-template-columns: 350px minmax(0, 1fr) 54px
+      grid-template-rows: 60px 1px minmax(0, 1fr) 64px
       grid-template-areas: |
         "presence title close"
         "divider divider divider"
@@ -7377,37 +7065,24 @@ views:
               padding: 0;
             }
         cards:
-          - type: markdown
-            content: "**ANWESENHEIT**"
-            card_mod:
-              style: |
-                ha-card {
-                  color: rgba(255,255,255,.58);
-                  background: transparent;
-                  box-shadow: none;
-                  border: 0;
-                  font-size: 12px;
-                  letter-spacing: .08em;
-                  padding: 0 0 8px 0;
-                }
           - type: horizontal-stack
             cards:
               - type: custom:mushroom-person-card
                 entity: person.person_1
-                name: Person 1
-                icon_type: icon
-                primary_info: none
-                secondary_info: none
-                layout: vertical
+                layout: horizontal
+                fill_container: false
+                icon_type: entity-picture
+                primary_info: name
+                secondary_info: state
                 card_mod:
                   style: *person_chip_style
               - type: custom:mushroom-person-card
                 entity: person.person_2
-                name: Person 2
-                icon_type: icon
-                primary_info: none
-                secondary_info: none
-                layout: vertical
+                layout: horizontal
+                fill_container: false
+                icon_type: entity-picture
+                primary_info: name
+                secondary_info: state
                 card_mod:
                   style: *person_chip_style
       - type: custom:mushroom-template-card
@@ -7650,8 +7325,8 @@ views:
     type: custom:grid-layout
     layout:
       # Gleiche Rasterstruktur wie die Startseite; nur Karten und Navigation werden je Seite angepasst.
-      grid-template-columns: 300px minmax(0, 1fr) 54px
-      grid-template-rows: 96px 1px minmax(0, 1fr) 64px
+      grid-template-columns: 350px minmax(0, 1fr) 54px
+      grid-template-rows: 60px 1px minmax(0, 1fr) 64px
       grid-template-areas: |
         "presence title close"
         "divider divider divider"
@@ -7698,37 +7373,24 @@ views:
               padding: 0;
             }
         cards:
-          - type: markdown
-            content: "**ANWESENHEIT**"
-            card_mod:
-              style: |
-                ha-card {
-                  color: rgba(255,255,255,.58);
-                  background: transparent;
-                  box-shadow: none;
-                  border: 0;
-                  font-size: 12px;
-                  letter-spacing: .08em;
-                  padding: 0 0 8px 0;
-                }
           - type: horizontal-stack
             cards:
               - type: custom:mushroom-person-card
                 entity: person.person_1
-                name: Person 1
-                icon_type: icon
-                primary_info: none
-                secondary_info: none
-                layout: vertical
+                layout: horizontal
+                fill_container: false
+                icon_type: entity-picture
+                primary_info: name
+                secondary_info: state
                 card_mod:
                   style: *person_chip_style
               - type: custom:mushroom-person-card
                 entity: person.person_2
-                name: Person 2
-                icon_type: icon
-                primary_info: none
-                secondary_info: none
-                layout: vertical
+                layout: horizontal
+                fill_container: false
+                icon_type: entity-picture
+                primary_info: name
+                secondary_info: state
                 card_mod:
                   style: *person_chip_style
       - type: custom:mushroom-template-card
@@ -7944,8 +7606,8 @@ views:
     type: custom:grid-layout
     layout:
       # Gleiche Rasterstruktur wie die Startseite; nur Karten und Navigation werden je Seite angepasst.
-      grid-template-columns: 300px minmax(0, 1fr) 54px
-      grid-template-rows: 96px 1px minmax(0, 1fr) 64px
+      grid-template-columns: 350px minmax(0, 1fr) 54px
+      grid-template-rows: 60px 1px minmax(0, 1fr) 64px
       grid-template-areas: |
         "presence title close"
         "divider divider divider"
@@ -7992,37 +7654,24 @@ views:
               padding: 0;
             }
         cards:
-          - type: markdown
-            content: "**ANWESENHEIT**"
-            card_mod:
-              style: |
-                ha-card {
-                  color: rgba(255,255,255,.58);
-                  background: transparent;
-                  box-shadow: none;
-                  border: 0;
-                  font-size: 12px;
-                  letter-spacing: .08em;
-                  padding: 0 0 8px 0;
-                }
           - type: horizontal-stack
             cards:
               - type: custom:mushroom-person-card
                 entity: person.person_1
-                name: Person 1
-                icon_type: icon
-                primary_info: none
-                secondary_info: none
-                layout: vertical
+                layout: horizontal
+                fill_container: false
+                icon_type: entity-picture
+                primary_info: name
+                secondary_info: state
                 card_mod:
                   style: *person_chip_style
               - type: custom:mushroom-person-card
                 entity: person.person_2
-                name: Person 2
-                icon_type: icon
-                primary_info: none
-                secondary_info: none
-                layout: vertical
+                layout: horizontal
+                fill_container: false
+                icon_type: entity-picture
+                primary_info: name
+                secondary_info: state
                 card_mod:
                   style: *person_chip_style
       - type: custom:mushroom-template-card
@@ -8238,8 +7887,8 @@ views:
     type: custom:grid-layout
     layout:
       # Gleiche Rasterstruktur wie die Startseite; nur Karten und Navigation werden je Seite angepasst.
-      grid-template-columns: 300px minmax(0, 1fr) 54px
-      grid-template-rows: 96px 1px minmax(0, 1fr) 64px
+      grid-template-columns: 350px minmax(0, 1fr) 54px
+      grid-template-rows: 60px 1px minmax(0, 1fr) 64px
       grid-template-areas: |
         "presence title close"
         "divider divider divider"
@@ -8286,37 +7935,24 @@ views:
               padding: 0;
             }
         cards:
-          - type: markdown
-            content: "**ANWESENHEIT**"
-            card_mod:
-              style: |
-                ha-card {
-                  color: rgba(255,255,255,.58);
-                  background: transparent;
-                  box-shadow: none;
-                  border: 0;
-                  font-size: 12px;
-                  letter-spacing: .08em;
-                  padding: 0 0 8px 0;
-                }
           - type: horizontal-stack
             cards:
               - type: custom:mushroom-person-card
                 entity: person.person_1
-                name: Person 1
-                icon_type: icon
-                primary_info: none
-                secondary_info: none
-                layout: vertical
+                layout: horizontal
+                fill_container: false
+                icon_type: entity-picture
+                primary_info: name
+                secondary_info: state
                 card_mod:
                   style: *person_chip_style
               - type: custom:mushroom-person-card
                 entity: person.person_2
-                name: Person 2
-                icon_type: icon
-                primary_info: none
-                secondary_info: none
-                layout: vertical
+                layout: horizontal
+                fill_container: false
+                icon_type: entity-picture
+                primary_info: name
+                secondary_info: state
                 card_mod:
                   style: *person_chip_style
       - type: custom:mushroom-template-card
@@ -8531,8 +8167,8 @@ views:
     type: custom:grid-layout
     layout:
       # Gleiche Rasterstruktur wie die Startseite; nur Karten und Navigation werden je Seite angepasst.
-      grid-template-columns: 300px minmax(0, 1fr) 54px
-      grid-template-rows: 96px 1px minmax(0, 1fr) 64px
+      grid-template-columns: 350px minmax(0, 1fr) 54px
+      grid-template-rows: 60px 1px minmax(0, 1fr) 64px
       grid-template-areas: |
         "presence title close"
         "divider divider divider"
@@ -8579,37 +8215,24 @@ views:
               padding: 0;
             }
         cards:
-          - type: markdown
-            content: "**ANWESENHEIT**"
-            card_mod:
-              style: |
-                ha-card {
-                  color: rgba(255,255,255,.58);
-                  background: transparent;
-                  box-shadow: none;
-                  border: 0;
-                  font-size: 12px;
-                  letter-spacing: .08em;
-                  padding: 0 0 8px 0;
-                }
           - type: horizontal-stack
             cards:
               - type: custom:mushroom-person-card
                 entity: person.person_1
-                name: Person 1
-                icon_type: icon
-                primary_info: none
-                secondary_info: none
-                layout: vertical
+                layout: horizontal
+                fill_container: false
+                icon_type: entity-picture
+                primary_info: name
+                secondary_info: state
                 card_mod:
                   style: *person_chip_style
               - type: custom:mushroom-person-card
                 entity: person.person_2
-                name: Person 2
-                icon_type: icon
-                primary_info: none
-                secondary_info: none
-                layout: vertical
+                layout: horizontal
+                fill_container: false
+                icon_type: entity-picture
+                primary_info: name
+                secondary_info: state
                 card_mod:
                   style: *person_chip_style
       - type: custom:mushroom-template-card
@@ -8825,8 +8448,8 @@ views:
     type: custom:grid-layout
     layout:
       # Gleiche Rasterstruktur wie die Startseite; nur Karten und Navigation werden je Seite angepasst.
-      grid-template-columns: 300px minmax(0, 1fr) 54px
-      grid-template-rows: 96px 1px minmax(0, 1fr) 64px
+      grid-template-columns: 350px minmax(0, 1fr) 54px
+      grid-template-rows: 60px 1px minmax(0, 1fr) 64px
       grid-template-areas: |
         "presence title close"
         "divider divider divider"
@@ -8873,37 +8496,24 @@ views:
               padding: 0;
             }
         cards:
-          - type: markdown
-            content: "**ANWESENHEIT**"
-            card_mod:
-              style: |
-                ha-card {
-                  color: rgba(255,255,255,.58);
-                  background: transparent;
-                  box-shadow: none;
-                  border: 0;
-                  font-size: 12px;
-                  letter-spacing: .08em;
-                  padding: 0 0 8px 0;
-                }
           - type: horizontal-stack
             cards:
               - type: custom:mushroom-person-card
                 entity: person.person_1
-                name: Person 1
-                icon_type: icon
-                primary_info: none
-                secondary_info: none
-                layout: vertical
+                layout: horizontal
+                fill_container: false
+                icon_type: entity-picture
+                primary_info: name
+                secondary_info: state
                 card_mod:
                   style: *person_chip_style
               - type: custom:mushroom-person-card
                 entity: person.person_2
-                name: Person 2
-                icon_type: icon
-                primary_info: none
-                secondary_info: none
-                layout: vertical
+                layout: horizontal
+                fill_container: false
+                icon_type: entity-picture
+                primary_info: name
+                secondary_info: state
                 card_mod:
                   style: *person_chip_style
       - type: custom:mushroom-template-card
@@ -9119,8 +8729,8 @@ views:
     type: custom:grid-layout
     layout:
       # Gleiche Rasterstruktur wie die Startseite; nur Karten und Navigation werden je Seite angepasst.
-      grid-template-columns: 300px minmax(0, 1fr) 54px
-      grid-template-rows: 96px 1px minmax(0, 1fr) 64px
+      grid-template-columns: 350px minmax(0, 1fr) 54px
+      grid-template-rows: 60px 1px minmax(0, 1fr) 64px
       grid-template-areas: |
         "presence title close"
         "divider divider divider"
@@ -9167,37 +8777,24 @@ views:
               padding: 0;
             }
         cards:
-          - type: markdown
-            content: "**ANWESENHEIT**"
-            card_mod:
-              style: |
-                ha-card {
-                  color: rgba(255,255,255,.58);
-                  background: transparent;
-                  box-shadow: none;
-                  border: 0;
-                  font-size: 12px;
-                  letter-spacing: .08em;
-                  padding: 0 0 8px 0;
-                }
           - type: horizontal-stack
             cards:
               - type: custom:mushroom-person-card
                 entity: person.person_1
-                name: Person 1
-                icon_type: icon
-                primary_info: none
-                secondary_info: none
-                layout: vertical
+                layout: horizontal
+                fill_container: false
+                icon_type: entity-picture
+                primary_info: name
+                secondary_info: state
                 card_mod:
                   style: *person_chip_style
               - type: custom:mushroom-person-card
                 entity: person.person_2
-                name: Person 2
-                icon_type: icon
-                primary_info: none
-                secondary_info: none
-                layout: vertical
+                layout: horizontal
+                fill_container: false
+                icon_type: entity-picture
+                primary_info: name
+                secondary_info: state
                 card_mod:
                   style: *person_chip_style
       - type: custom:mushroom-template-card
@@ -9413,8 +9010,8 @@ views:
     type: custom:grid-layout
     layout:
       # Gleiche Rasterstruktur wie die Startseite; nur Karten und Navigation werden je Seite angepasst.
-      grid-template-columns: 300px minmax(0, 1fr) 54px
-      grid-template-rows: 96px 1px minmax(0, 1fr) 64px
+      grid-template-columns: 350px minmax(0, 1fr) 54px
+      grid-template-rows: 60px 1px minmax(0, 1fr) 64px
       grid-template-areas: |
         "presence title close"
         "divider divider divider"
@@ -9461,37 +9058,24 @@ views:
               padding: 0;
             }
         cards:
-          - type: markdown
-            content: "**ANWESENHEIT**"
-            card_mod:
-              style: |
-                ha-card {
-                  color: rgba(255,255,255,.58);
-                  background: transparent;
-                  box-shadow: none;
-                  border: 0;
-                  font-size: 12px;
-                  letter-spacing: .08em;
-                  padding: 0 0 8px 0;
-                }
           - type: horizontal-stack
             cards:
               - type: custom:mushroom-person-card
                 entity: person.person_1
-                name: Person 1
-                icon_type: icon
-                primary_info: none
-                secondary_info: none
-                layout: vertical
+                layout: horizontal
+                fill_container: false
+                icon_type: entity-picture
+                primary_info: name
+                secondary_info: state
                 card_mod:
                   style: *person_chip_style
               - type: custom:mushroom-person-card
                 entity: person.person_2
-                name: Person 2
-                icon_type: icon
-                primary_info: none
-                secondary_info: none
-                layout: vertical
+                layout: horizontal
+                fill_container: false
+                icon_type: entity-picture
+                primary_info: name
+                secondary_info: state
                 card_mod:
                   style: *person_chip_style
       - type: custom:mushroom-template-card
@@ -9707,8 +9291,8 @@ views:
     type: custom:grid-layout
     layout:
       # Gleiche Rasterstruktur wie die Startseite; nur Karten und Navigation werden je Seite angepasst.
-      grid-template-columns: 300px minmax(0, 1fr) 54px
-      grid-template-rows: 96px 1px minmax(0, 1fr) 64px
+      grid-template-columns: 350px minmax(0, 1fr) 54px
+      grid-template-rows: 60px 1px minmax(0, 1fr) 64px
       grid-template-areas: |
         "presence title close"
         "divider divider divider"
@@ -9755,37 +9339,24 @@ views:
               padding: 0;
             }
         cards:
-          - type: markdown
-            content: "**ANWESENHEIT**"
-            card_mod:
-              style: |
-                ha-card {
-                  color: rgba(255,255,255,.58);
-                  background: transparent;
-                  box-shadow: none;
-                  border: 0;
-                  font-size: 12px;
-                  letter-spacing: .08em;
-                  padding: 0 0 8px 0;
-                }
           - type: horizontal-stack
             cards:
               - type: custom:mushroom-person-card
                 entity: person.person_1
-                name: Person 1
-                icon_type: icon
-                primary_info: none
-                secondary_info: none
-                layout: vertical
+                layout: horizontal
+                fill_container: false
+                icon_type: entity-picture
+                primary_info: name
+                secondary_info: state
                 card_mod:
                   style: *person_chip_style
               - type: custom:mushroom-person-card
                 entity: person.person_2
-                name: Person 2
-                icon_type: icon
-                primary_info: none
-                secondary_info: none
-                layout: vertical
+                layout: horizontal
+                fill_container: false
+                icon_type: entity-picture
+                primary_info: name
+                secondary_info: state
                 card_mod:
                   style: *person_chip_style
       - type: custom:mushroom-template-card
@@ -10028,8 +9599,8 @@ views:
     type: custom:grid-layout
     layout:
       # Gleiche Rasterstruktur wie die Startseite; nur Karten und Navigation werden je Seite angepasst.
-      grid-template-columns: 300px minmax(0, 1fr) 54px
-      grid-template-rows: 96px 1px minmax(0, 1fr) 64px
+      grid-template-columns: 350px minmax(0, 1fr) 54px
+      grid-template-rows: 60px 1px minmax(0, 1fr) 64px
       grid-template-areas: |
         "presence title close"
         "divider divider divider"
@@ -10076,37 +9647,24 @@ views:
               padding: 0;
             }
         cards:
-          - type: markdown
-            content: "**ANWESENHEIT**"
-            card_mod:
-              style: |
-                ha-card {
-                  color: rgba(255,255,255,.58);
-                  background: transparent;
-                  box-shadow: none;
-                  border: 0;
-                  font-size: 12px;
-                  letter-spacing: .08em;
-                  padding: 0 0 8px 0;
-                }
           - type: horizontal-stack
             cards:
               - type: custom:mushroom-person-card
                 entity: person.person_1
-                name: Person 1
-                icon_type: icon
-                primary_info: none
-                secondary_info: none
-                layout: vertical
+                layout: horizontal
+                fill_container: false
+                icon_type: entity-picture
+                primary_info: name
+                secondary_info: state
                 card_mod:
                   style: *person_chip_style
               - type: custom:mushroom-person-card
                 entity: person.person_2
-                name: Person 2
-                icon_type: icon
-                primary_info: none
-                secondary_info: none
-                layout: vertical
+                layout: horizontal
+                fill_container: false
+                icon_type: entity-picture
+                primary_info: name
+                secondary_info: state
                 card_mod:
                   style: *person_chip_style
       - type: custom:mushroom-template-card
@@ -10322,8 +9880,8 @@ views:
     type: custom:grid-layout
     layout:
       # Gleiche Rasterstruktur wie die Startseite; nur Karten und Navigation werden je Seite angepasst.
-      grid-template-columns: 300px minmax(0, 1fr) 54px
-      grid-template-rows: 96px 1px minmax(0, 1fr) 64px
+      grid-template-columns: 350px minmax(0, 1fr) 54px
+      grid-template-rows: 60px 1px minmax(0, 1fr) 64px
       grid-template-areas: |
         "presence title close"
         "divider divider divider"
@@ -10370,37 +9928,24 @@ views:
               padding: 0;
             }
         cards:
-          - type: markdown
-            content: "**ANWESENHEIT**"
-            card_mod:
-              style: |
-                ha-card {
-                  color: rgba(255,255,255,.58);
-                  background: transparent;
-                  box-shadow: none;
-                  border: 0;
-                  font-size: 12px;
-                  letter-spacing: .08em;
-                  padding: 0 0 8px 0;
-                }
           - type: horizontal-stack
             cards:
               - type: custom:mushroom-person-card
                 entity: person.person_1
-                name: Person 1
-                icon_type: icon
-                primary_info: none
-                secondary_info: none
-                layout: vertical
+                layout: horizontal
+                fill_container: false
+                icon_type: entity-picture
+                primary_info: name
+                secondary_info: state
                 card_mod:
                   style: *person_chip_style
               - type: custom:mushroom-person-card
                 entity: person.person_2
-                name: Person 2
-                icon_type: icon
-                primary_info: none
-                secondary_info: none
-                layout: vertical
+                layout: horizontal
+                fill_container: false
+                icon_type: entity-picture
+                primary_info: name
+                secondary_info: state
                 card_mod:
                   style: *person_chip_style
       - type: custom:mushroom-template-card
@@ -10616,8 +10161,8 @@ views:
     type: custom:grid-layout
     layout:
       # Gleiche Rasterstruktur wie die Startseite; nur Karten und Navigation werden je Seite angepasst.
-      grid-template-columns: 300px minmax(0, 1fr) 54px
-      grid-template-rows: 96px 1px minmax(0, 1fr) 64px
+      grid-template-columns: 350px minmax(0, 1fr) 54px
+      grid-template-rows: 60px 1px minmax(0, 1fr) 64px
       grid-template-areas: |
         "presence title close"
         "divider divider divider"
@@ -10664,37 +10209,24 @@ views:
               padding: 0;
             }
         cards:
-          - type: markdown
-            content: "**ANWESENHEIT**"
-            card_mod:
-              style: |
-                ha-card {
-                  color: rgba(255,255,255,.58);
-                  background: transparent;
-                  box-shadow: none;
-                  border: 0;
-                  font-size: 12px;
-                  letter-spacing: .08em;
-                  padding: 0 0 8px 0;
-                }
           - type: horizontal-stack
             cards:
               - type: custom:mushroom-person-card
                 entity: person.person_1
-                name: Person 1
-                icon_type: icon
-                primary_info: none
-                secondary_info: none
-                layout: vertical
+                layout: horizontal
+                fill_container: false
+                icon_type: entity-picture
+                primary_info: name
+                secondary_info: state
                 card_mod:
                   style: *person_chip_style
               - type: custom:mushroom-person-card
                 entity: person.person_2
-                name: Person 2
-                icon_type: icon
-                primary_info: none
-                secondary_info: none
-                layout: vertical
+                layout: horizontal
+                fill_container: false
+                icon_type: entity-picture
+                primary_info: name
+                secondary_info: state
                 card_mod:
                   style: *person_chip_style
       - type: custom:mushroom-template-card
@@ -10909,8 +10441,8 @@ views:
     type: custom:grid-layout
     layout:
       # Gleiche Rasterstruktur wie die Startseite; nur Karten und Navigation werden je Seite angepasst.
-      grid-template-columns: 300px minmax(0, 1fr) 54px
-      grid-template-rows: 96px 1px minmax(0, 1fr) 64px
+      grid-template-columns: 350px minmax(0, 1fr) 54px
+      grid-template-rows: 60px 1px minmax(0, 1fr) 64px
       grid-template-areas: |
         "presence title close"
         "divider divider divider"
@@ -10957,37 +10489,24 @@ views:
               padding: 0;
             }
         cards:
-          - type: markdown
-            content: "**ANWESENHEIT**"
-            card_mod:
-              style: |
-                ha-card {
-                  color: rgba(255,255,255,.58);
-                  background: transparent;
-                  box-shadow: none;
-                  border: 0;
-                  font-size: 12px;
-                  letter-spacing: .08em;
-                  padding: 0 0 8px 0;
-                }
           - type: horizontal-stack
             cards:
               - type: custom:mushroom-person-card
                 entity: person.person_1
-                name: Person 1
-                icon_type: icon
-                primary_info: none
-                secondary_info: none
-                layout: vertical
+                layout: horizontal
+                fill_container: false
+                icon_type: entity-picture
+                primary_info: name
+                secondary_info: state
                 card_mod:
                   style: *person_chip_style
               - type: custom:mushroom-person-card
                 entity: person.person_2
-                name: Person 2
-                icon_type: icon
-                primary_info: none
-                secondary_info: none
-                layout: vertical
+                layout: horizontal
+                fill_container: false
+                icon_type: entity-picture
+                primary_info: name
+                secondary_info: state
                 card_mod:
                   style: *person_chip_style
       - type: custom:mushroom-template-card
@@ -11203,8 +10722,8 @@ views:
     type: custom:grid-layout
     layout:
       # Gleiche Rasterstruktur wie die Startseite; nur Karten und Navigation werden je Seite angepasst.
-      grid-template-columns: 300px minmax(0, 1fr) 54px
-      grid-template-rows: 96px 1px minmax(0, 1fr) 64px
+      grid-template-columns: 350px minmax(0, 1fr) 54px
+      grid-template-rows: 60px 1px minmax(0, 1fr) 64px
       grid-template-areas: |
         "presence title close"
         "divider divider divider"
@@ -11251,37 +10770,24 @@ views:
               padding: 0;
             }
         cards:
-          - type: markdown
-            content: "**ANWESENHEIT**"
-            card_mod:
-              style: |
-                ha-card {
-                  color: rgba(255,255,255,.58);
-                  background: transparent;
-                  box-shadow: none;
-                  border: 0;
-                  font-size: 12px;
-                  letter-spacing: .08em;
-                  padding: 0 0 8px 0;
-                }
           - type: horizontal-stack
             cards:
               - type: custom:mushroom-person-card
                 entity: person.person_1
-                name: Person 1
-                icon_type: icon
-                primary_info: none
-                secondary_info: none
-                layout: vertical
+                layout: horizontal
+                fill_container: false
+                icon_type: entity-picture
+                primary_info: name
+                secondary_info: state
                 card_mod:
                   style: *person_chip_style
               - type: custom:mushroom-person-card
                 entity: person.person_2
-                name: Person 2
-                icon_type: icon
-                primary_info: none
-                secondary_info: none
-                layout: vertical
+                layout: horizontal
+                fill_container: false
+                icon_type: entity-picture
+                primary_info: name
+                secondary_info: state
                 card_mod:
                   style: *person_chip_style
       - type: custom:mushroom-template-card
@@ -11497,8 +11003,8 @@ views:
     type: custom:grid-layout
     layout:
       # Gleiche Rasterstruktur wie die Startseite; nur Karten und Navigation werden je Seite angepasst.
-      grid-template-columns: 300px minmax(0, 1fr) 54px
-      grid-template-rows: 96px 1px minmax(0, 1fr) 64px
+      grid-template-columns: 350px minmax(0, 1fr) 54px
+      grid-template-rows: 60px 1px minmax(0, 1fr) 64px
       grid-template-areas: |
         "presence title close"
         "divider divider divider"
@@ -11545,37 +11051,24 @@ views:
               padding: 0;
             }
         cards:
-          - type: markdown
-            content: "**ANWESENHEIT**"
-            card_mod:
-              style: |
-                ha-card {
-                  color: rgba(255,255,255,.58);
-                  background: transparent;
-                  box-shadow: none;
-                  border: 0;
-                  font-size: 12px;
-                  letter-spacing: .08em;
-                  padding: 0 0 8px 0;
-                }
           - type: horizontal-stack
             cards:
               - type: custom:mushroom-person-card
                 entity: person.person_1
-                name: Person 1
-                icon_type: icon
-                primary_info: none
-                secondary_info: none
-                layout: vertical
+                layout: horizontal
+                fill_container: false
+                icon_type: entity-picture
+                primary_info: name
+                secondary_info: state
                 card_mod:
                   style: *person_chip_style
               - type: custom:mushroom-person-card
                 entity: person.person_2
-                name: Person 2
-                icon_type: icon
-                primary_info: none
-                secondary_info: none
-                layout: vertical
+                layout: horizontal
+                fill_container: false
+                icon_type: entity-picture
+                primary_info: name
+                secondary_info: state
                 card_mod:
                   style: *person_chip_style
       - type: custom:mushroom-template-card
@@ -11791,8 +11284,8 @@ views:
     type: custom:grid-layout
     layout:
       # Gleiche Rasterstruktur wie die Startseite; nur Karten und Navigation werden je Seite angepasst.
-      grid-template-columns: 300px minmax(0, 1fr) 54px
-      grid-template-rows: 96px 1px minmax(0, 1fr) 64px
+      grid-template-columns: 350px minmax(0, 1fr) 54px
+      grid-template-rows: 60px 1px minmax(0, 1fr) 64px
       grid-template-areas: |
         "presence title close"
         "divider divider divider"
@@ -11839,37 +11332,24 @@ views:
               padding: 0;
             }
         cards:
-          - type: markdown
-            content: "**ANWESENHEIT**"
-            card_mod:
-              style: |
-                ha-card {
-                  color: rgba(255,255,255,.58);
-                  background: transparent;
-                  box-shadow: none;
-                  border: 0;
-                  font-size: 12px;
-                  letter-spacing: .08em;
-                  padding: 0 0 8px 0;
-                }
           - type: horizontal-stack
             cards:
               - type: custom:mushroom-person-card
                 entity: person.person_1
-                name: Person 1
-                icon_type: icon
-                primary_info: none
-                secondary_info: none
-                layout: vertical
+                layout: horizontal
+                fill_container: false
+                icon_type: entity-picture
+                primary_info: name
+                secondary_info: state
                 card_mod:
                   style: *person_chip_style
               - type: custom:mushroom-person-card
                 entity: person.person_2
-                name: Person 2
-                icon_type: icon
-                primary_info: none
-                secondary_info: none
-                layout: vertical
+                layout: horizontal
+                fill_container: false
+                icon_type: entity-picture
+                primary_info: name
+                secondary_info: state
                 card_mod:
                   style: *person_chip_style
       - type: custom:mushroom-template-card
@@ -12085,8 +11565,8 @@ views:
     type: custom:grid-layout
     layout:
       # Gleiche Rasterstruktur wie die Startseite; nur Karten und Navigation werden je Seite angepasst.
-      grid-template-columns: 300px minmax(0, 1fr) 54px
-      grid-template-rows: 96px 1px minmax(0, 1fr) 64px
+      grid-template-columns: 350px minmax(0, 1fr) 54px
+      grid-template-rows: 60px 1px minmax(0, 1fr) 64px
       grid-template-areas: |
         "presence title close"
         "divider divider divider"
@@ -12133,37 +11613,24 @@ views:
               padding: 0;
             }
         cards:
-          - type: markdown
-            content: "**ANWESENHEIT**"
-            card_mod:
-              style: |
-                ha-card {
-                  color: rgba(255,255,255,.58);
-                  background: transparent;
-                  box-shadow: none;
-                  border: 0;
-                  font-size: 12px;
-                  letter-spacing: .08em;
-                  padding: 0 0 8px 0;
-                }
           - type: horizontal-stack
             cards:
               - type: custom:mushroom-person-card
                 entity: person.person_1
-                name: Person 1
-                icon_type: icon
-                primary_info: none
-                secondary_info: none
-                layout: vertical
+                layout: horizontal
+                fill_container: false
+                icon_type: entity-picture
+                primary_info: name
+                secondary_info: state
                 card_mod:
                   style: *person_chip_style
               - type: custom:mushroom-person-card
                 entity: person.person_2
-                name: Person 2
-                icon_type: icon
-                primary_info: none
-                secondary_info: none
-                layout: vertical
+                layout: horizontal
+                fill_container: false
+                icon_type: entity-picture
+                primary_info: name
+                secondary_info: state
                 card_mod:
                   style: *person_chip_style
       - type: custom:mushroom-template-card
@@ -12406,8 +11873,8 @@ views:
     type: custom:grid-layout
     layout:
       # Gleiche Rasterstruktur wie die Startseite; nur Karten und Navigation werden je Seite angepasst.
-      grid-template-columns: 300px minmax(0, 1fr) 54px
-      grid-template-rows: 96px 1px minmax(0, 1fr) 64px
+      grid-template-columns: 350px minmax(0, 1fr) 54px
+      grid-template-rows: 60px 1px minmax(0, 1fr) 64px
       grid-template-areas: |
         "presence title close"
         "divider divider divider"
@@ -12454,37 +11921,24 @@ views:
               padding: 0;
             }
         cards:
-          - type: markdown
-            content: "**ANWESENHEIT**"
-            card_mod:
-              style: |
-                ha-card {
-                  color: rgba(255,255,255,.58);
-                  background: transparent;
-                  box-shadow: none;
-                  border: 0;
-                  font-size: 12px;
-                  letter-spacing: .08em;
-                  padding: 0 0 8px 0;
-                }
           - type: horizontal-stack
             cards:
               - type: custom:mushroom-person-card
                 entity: person.person_1
-                name: Person 1
-                icon_type: icon
-                primary_info: none
-                secondary_info: none
-                layout: vertical
+                layout: horizontal
+                fill_container: false
+                icon_type: entity-picture
+                primary_info: name
+                secondary_info: state
                 card_mod:
                   style: *person_chip_style
               - type: custom:mushroom-person-card
                 entity: person.person_2
-                name: Person 2
-                icon_type: icon
-                primary_info: none
-                secondary_info: none
-                layout: vertical
+                layout: horizontal
+                fill_container: false
+                icon_type: entity-picture
+                primary_info: name
+                secondary_info: state
                 card_mod:
                   style: *person_chip_style
       - type: custom:mushroom-template-card
@@ -12700,8 +12154,8 @@ views:
     type: custom:grid-layout
     layout:
       # Gleiche Rasterstruktur wie die Startseite; nur Karten und Navigation werden je Seite angepasst.
-      grid-template-columns: 300px minmax(0, 1fr) 54px
-      grid-template-rows: 96px 1px minmax(0, 1fr) 64px
+      grid-template-columns: 350px minmax(0, 1fr) 54px
+      grid-template-rows: 60px 1px minmax(0, 1fr) 64px
       grid-template-areas: |
         "presence title close"
         "divider divider divider"
@@ -12748,37 +12202,24 @@ views:
               padding: 0;
             }
         cards:
-          - type: markdown
-            content: "**ANWESENHEIT**"
-            card_mod:
-              style: |
-                ha-card {
-                  color: rgba(255,255,255,.58);
-                  background: transparent;
-                  box-shadow: none;
-                  border: 0;
-                  font-size: 12px;
-                  letter-spacing: .08em;
-                  padding: 0 0 8px 0;
-                }
           - type: horizontal-stack
             cards:
               - type: custom:mushroom-person-card
                 entity: person.person_1
-                name: Person 1
-                icon_type: icon
-                primary_info: none
-                secondary_info: none
-                layout: vertical
+                layout: horizontal
+                fill_container: false
+                icon_type: entity-picture
+                primary_info: name
+                secondary_info: state
                 card_mod:
                   style: *person_chip_style
               - type: custom:mushroom-person-card
                 entity: person.person_2
-                name: Person 2
-                icon_type: icon
-                primary_info: none
-                secondary_info: none
-                layout: vertical
+                layout: horizontal
+                fill_container: false
+                icon_type: entity-picture
+                primary_info: name
+                secondary_info: state
                 card_mod:
                   style: *person_chip_style
       - type: custom:mushroom-template-card
@@ -12994,8 +12435,8 @@ views:
     type: custom:grid-layout
     layout:
       # Gleiche Rasterstruktur wie die Startseite; nur Karten und Navigation werden je Seite angepasst.
-      grid-template-columns: 300px minmax(0, 1fr) 54px
-      grid-template-rows: 96px 1px minmax(0, 1fr) 64px
+      grid-template-columns: 350px minmax(0, 1fr) 54px
+      grid-template-rows: 60px 1px minmax(0, 1fr) 64px
       grid-template-areas: |
         "presence title close"
         "divider divider divider"
@@ -13042,37 +12483,24 @@ views:
               padding: 0;
             }
         cards:
-          - type: markdown
-            content: "**ANWESENHEIT**"
-            card_mod:
-              style: |
-                ha-card {
-                  color: rgba(255,255,255,.58);
-                  background: transparent;
-                  box-shadow: none;
-                  border: 0;
-                  font-size: 12px;
-                  letter-spacing: .08em;
-                  padding: 0 0 8px 0;
-                }
           - type: horizontal-stack
             cards:
               - type: custom:mushroom-person-card
                 entity: person.person_1
-                name: Person 1
-                icon_type: icon
-                primary_info: none
-                secondary_info: none
-                layout: vertical
+                layout: horizontal
+                fill_container: false
+                icon_type: entity-picture
+                primary_info: name
+                secondary_info: state
                 card_mod:
                   style: *person_chip_style
               - type: custom:mushroom-person-card
                 entity: person.person_2
-                name: Person 2
-                icon_type: icon
-                primary_info: none
-                secondary_info: none
-                layout: vertical
+                layout: horizontal
+                fill_container: false
+                icon_type: entity-picture
+                primary_info: name
+                secondary_info: state
                 card_mod:
                   style: *person_chip_style
       - type: custom:mushroom-template-card
@@ -13287,8 +12715,8 @@ views:
     type: custom:grid-layout
     layout:
       # Gleiche Rasterstruktur wie die Startseite; nur Karten und Navigation werden je Seite angepasst.
-      grid-template-columns: 300px minmax(0, 1fr) 54px
-      grid-template-rows: 96px 1px minmax(0, 1fr) 64px
+      grid-template-columns: 350px minmax(0, 1fr) 54px
+      grid-template-rows: 60px 1px minmax(0, 1fr) 64px
       grid-template-areas: |
         "presence title close"
         "divider divider divider"
@@ -13335,37 +12763,24 @@ views:
               padding: 0;
             }
         cards:
-          - type: markdown
-            content: "**ANWESENHEIT**"
-            card_mod:
-              style: |
-                ha-card {
-                  color: rgba(255,255,255,.58);
-                  background: transparent;
-                  box-shadow: none;
-                  border: 0;
-                  font-size: 12px;
-                  letter-spacing: .08em;
-                  padding: 0 0 8px 0;
-                }
           - type: horizontal-stack
             cards:
               - type: custom:mushroom-person-card
                 entity: person.person_1
-                name: Person 1
-                icon_type: icon
-                primary_info: none
-                secondary_info: none
-                layout: vertical
+                layout: horizontal
+                fill_container: false
+                icon_type: entity-picture
+                primary_info: name
+                secondary_info: state
                 card_mod:
                   style: *person_chip_style
               - type: custom:mushroom-person-card
                 entity: person.person_2
-                name: Person 2
-                icon_type: icon
-                primary_info: none
-                secondary_info: none
-                layout: vertical
+                layout: horizontal
+                fill_container: false
+                icon_type: entity-picture
+                primary_info: name
+                secondary_info: state
                 card_mod:
                   style: *person_chip_style
       - type: custom:mushroom-template-card
@@ -13581,8 +12996,8 @@ views:
     type: custom:grid-layout
     layout:
       # Gleiche Rasterstruktur wie die Startseite; nur Karten und Navigation werden je Seite angepasst.
-      grid-template-columns: 300px minmax(0, 1fr) 54px
-      grid-template-rows: 96px 1px minmax(0, 1fr) 64px
+      grid-template-columns: 350px minmax(0, 1fr) 54px
+      grid-template-rows: 60px 1px minmax(0, 1fr) 64px
       grid-template-areas: |
         "presence title close"
         "divider divider divider"
@@ -13629,37 +13044,24 @@ views:
               padding: 0;
             }
         cards:
-          - type: markdown
-            content: "**ANWESENHEIT**"
-            card_mod:
-              style: |
-                ha-card {
-                  color: rgba(255,255,255,.58);
-                  background: transparent;
-                  box-shadow: none;
-                  border: 0;
-                  font-size: 12px;
-                  letter-spacing: .08em;
-                  padding: 0 0 8px 0;
-                }
           - type: horizontal-stack
             cards:
               - type: custom:mushroom-person-card
                 entity: person.person_1
-                name: Person 1
-                icon_type: icon
-                primary_info: none
-                secondary_info: none
-                layout: vertical
+                layout: horizontal
+                fill_container: false
+                icon_type: entity-picture
+                primary_info: name
+                secondary_info: state
                 card_mod:
                   style: *person_chip_style
               - type: custom:mushroom-person-card
                 entity: person.person_2
-                name: Person 2
-                icon_type: icon
-                primary_info: none
-                secondary_info: none
-                layout: vertical
+                layout: horizontal
+                fill_container: false
+                icon_type: entity-picture
+                primary_info: name
+                secondary_info: state
                 card_mod:
                   style: *person_chip_style
       - type: custom:mushroom-template-card
@@ -13875,8 +13277,8 @@ views:
     type: custom:grid-layout
     layout:
       # Gleiche Rasterstruktur wie die Startseite; nur Karten und Navigation werden je Seite angepasst.
-      grid-template-columns: 300px minmax(0, 1fr) 54px
-      grid-template-rows: 96px 1px minmax(0, 1fr) 64px
+      grid-template-columns: 350px minmax(0, 1fr) 54px
+      grid-template-rows: 60px 1px minmax(0, 1fr) 64px
       grid-template-areas: |
         "presence title close"
         "divider divider divider"
@@ -13923,37 +13325,24 @@ views:
               padding: 0;
             }
         cards:
-          - type: markdown
-            content: "**ANWESENHEIT**"
-            card_mod:
-              style: |
-                ha-card {
-                  color: rgba(255,255,255,.58);
-                  background: transparent;
-                  box-shadow: none;
-                  border: 0;
-                  font-size: 12px;
-                  letter-spacing: .08em;
-                  padding: 0 0 8px 0;
-                }
           - type: horizontal-stack
             cards:
               - type: custom:mushroom-person-card
                 entity: person.person_1
-                name: Person 1
-                icon_type: icon
-                primary_info: none
-                secondary_info: none
-                layout: vertical
+                layout: horizontal
+                fill_container: false
+                icon_type: entity-picture
+                primary_info: name
+                secondary_info: state
                 card_mod:
                   style: *person_chip_style
               - type: custom:mushroom-person-card
                 entity: person.person_2
-                name: Person 2
-                icon_type: icon
-                primary_info: none
-                secondary_info: none
-                layout: vertical
+                layout: horizontal
+                fill_container: false
+                icon_type: entity-picture
+                primary_info: name
+                secondary_info: state
                 card_mod:
                   style: *person_chip_style
       - type: custom:mushroom-template-card
@@ -14169,8 +13558,8 @@ views:
     type: custom:grid-layout
     layout:
       # Gleiche Rasterstruktur wie die Startseite; nur Karten und Navigation werden je Seite angepasst.
-      grid-template-columns: 300px minmax(0, 1fr) 54px
-      grid-template-rows: 96px 1px minmax(0, 1fr) 64px
+      grid-template-columns: 350px minmax(0, 1fr) 54px
+      grid-template-rows: 60px 1px minmax(0, 1fr) 64px
       grid-template-areas: |
         "presence title close"
         "divider divider divider"
@@ -14217,37 +13606,24 @@ views:
               padding: 0;
             }
         cards:
-          - type: markdown
-            content: "**ANWESENHEIT**"
-            card_mod:
-              style: |
-                ha-card {
-                  color: rgba(255,255,255,.58);
-                  background: transparent;
-                  box-shadow: none;
-                  border: 0;
-                  font-size: 12px;
-                  letter-spacing: .08em;
-                  padding: 0 0 8px 0;
-                }
           - type: horizontal-stack
             cards:
               - type: custom:mushroom-person-card
                 entity: person.person_1
-                name: Person 1
-                icon_type: icon
-                primary_info: none
-                secondary_info: none
-                layout: vertical
+                layout: horizontal
+                fill_container: false
+                icon_type: entity-picture
+                primary_info: name
+                secondary_info: state
                 card_mod:
                   style: *person_chip_style
               - type: custom:mushroom-person-card
                 entity: person.person_2
-                name: Person 2
-                icon_type: icon
-                primary_info: none
-                secondary_info: none
-                layout: vertical
+                layout: horizontal
+                fill_container: false
+                icon_type: entity-picture
+                primary_info: name
+                secondary_info: state
                 card_mod:
                   style: *person_chip_style
       - type: custom:mushroom-template-card
@@ -14463,8 +13839,8 @@ views:
     type: custom:grid-layout
     layout:
       # Gleiche Rasterstruktur wie die Startseite; nur Karten und Navigation werden je Seite angepasst.
-      grid-template-columns: 300px minmax(0, 1fr) 54px
-      grid-template-rows: 96px 1px minmax(0, 1fr) 64px
+      grid-template-columns: 350px minmax(0, 1fr) 54px
+      grid-template-rows: 60px 1px minmax(0, 1fr) 64px
       grid-template-areas: |
         "presence title close"
         "divider divider divider"
@@ -14511,37 +13887,24 @@ views:
               padding: 0;
             }
         cards:
-          - type: markdown
-            content: "**ANWESENHEIT**"
-            card_mod:
-              style: |
-                ha-card {
-                  color: rgba(255,255,255,.58);
-                  background: transparent;
-                  box-shadow: none;
-                  border: 0;
-                  font-size: 12px;
-                  letter-spacing: .08em;
-                  padding: 0 0 8px 0;
-                }
           - type: horizontal-stack
             cards:
               - type: custom:mushroom-person-card
                 entity: person.person_1
-                name: Person 1
-                icon_type: icon
-                primary_info: none
-                secondary_info: none
-                layout: vertical
+                layout: horizontal
+                fill_container: false
+                icon_type: entity-picture
+                primary_info: name
+                secondary_info: state
                 card_mod:
                   style: *person_chip_style
               - type: custom:mushroom-person-card
                 entity: person.person_2
-                name: Person 2
-                icon_type: icon
-                primary_info: none
-                secondary_info: none
-                layout: vertical
+                layout: horizontal
+                fill_container: false
+                icon_type: entity-picture
+                primary_info: name
+                secondary_info: state
                 card_mod:
                   style: *person_chip_style
       - type: custom:mushroom-template-card
@@ -14784,8 +14147,8 @@ views:
     type: custom:grid-layout
     layout:
       # Gleiche Rasterstruktur wie die Startseite; nur Karten und Navigation werden je Seite angepasst.
-      grid-template-columns: 300px minmax(0, 1fr) 54px
-      grid-template-rows: 96px 1px minmax(0, 1fr) 64px
+      grid-template-columns: 350px minmax(0, 1fr) 54px
+      grid-template-rows: 60px 1px minmax(0, 1fr) 64px
       grid-template-areas: |
         "presence title close"
         "divider divider divider"
@@ -14832,37 +14195,24 @@ views:
               padding: 0;
             }
         cards:
-          - type: markdown
-            content: "**ANWESENHEIT**"
-            card_mod:
-              style: |
-                ha-card {
-                  color: rgba(255,255,255,.58);
-                  background: transparent;
-                  box-shadow: none;
-                  border: 0;
-                  font-size: 12px;
-                  letter-spacing: .08em;
-                  padding: 0 0 8px 0;
-                }
           - type: horizontal-stack
             cards:
               - type: custom:mushroom-person-card
                 entity: person.person_1
-                name: Person 1
-                icon_type: icon
-                primary_info: none
-                secondary_info: none
-                layout: vertical
+                layout: horizontal
+                fill_container: false
+                icon_type: entity-picture
+                primary_info: name
+                secondary_info: state
                 card_mod:
                   style: *person_chip_style
               - type: custom:mushroom-person-card
                 entity: person.person_2
-                name: Person 2
-                icon_type: icon
-                primary_info: none
-                secondary_info: none
-                layout: vertical
+                layout: horizontal
+                fill_container: false
+                icon_type: entity-picture
+                primary_info: name
+                secondary_info: state
                 card_mod:
                   style: *person_chip_style
       - type: custom:mushroom-template-card
@@ -15078,8 +14428,8 @@ views:
     type: custom:grid-layout
     layout:
       # Gleiche Rasterstruktur wie die Startseite; nur Karten und Navigation werden je Seite angepasst.
-      grid-template-columns: 300px minmax(0, 1fr) 54px
-      grid-template-rows: 96px 1px minmax(0, 1fr) 64px
+      grid-template-columns: 350px minmax(0, 1fr) 54px
+      grid-template-rows: 60px 1px minmax(0, 1fr) 64px
       grid-template-areas: |
         "presence title close"
         "divider divider divider"
@@ -15126,37 +14476,24 @@ views:
               padding: 0;
             }
         cards:
-          - type: markdown
-            content: "**ANWESENHEIT**"
-            card_mod:
-              style: |
-                ha-card {
-                  color: rgba(255,255,255,.58);
-                  background: transparent;
-                  box-shadow: none;
-                  border: 0;
-                  font-size: 12px;
-                  letter-spacing: .08em;
-                  padding: 0 0 8px 0;
-                }
           - type: horizontal-stack
             cards:
               - type: custom:mushroom-person-card
                 entity: person.person_1
-                name: Person 1
-                icon_type: icon
-                primary_info: none
-                secondary_info: none
-                layout: vertical
+                layout: horizontal
+                fill_container: false
+                icon_type: entity-picture
+                primary_info: name
+                secondary_info: state
                 card_mod:
                   style: *person_chip_style
               - type: custom:mushroom-person-card
                 entity: person.person_2
-                name: Person 2
-                icon_type: icon
-                primary_info: none
-                secondary_info: none
-                layout: vertical
+                layout: horizontal
+                fill_container: false
+                icon_type: entity-picture
+                primary_info: name
+                secondary_info: state
                 card_mod:
                   style: *person_chip_style
       - type: custom:mushroom-template-card
@@ -15372,8 +14709,8 @@ views:
     type: custom:grid-layout
     layout:
       # Gleiche Rasterstruktur wie die Startseite; nur Karten und Navigation werden je Seite angepasst.
-      grid-template-columns: 300px minmax(0, 1fr) 54px
-      grid-template-rows: 96px 1px minmax(0, 1fr) 64px
+      grid-template-columns: 350px minmax(0, 1fr) 54px
+      grid-template-rows: 60px 1px minmax(0, 1fr) 64px
       grid-template-areas: |
         "presence title close"
         "divider divider divider"
@@ -15420,37 +14757,24 @@ views:
               padding: 0;
             }
         cards:
-          - type: markdown
-            content: "**ANWESENHEIT**"
-            card_mod:
-              style: |
-                ha-card {
-                  color: rgba(255,255,255,.58);
-                  background: transparent;
-                  box-shadow: none;
-                  border: 0;
-                  font-size: 12px;
-                  letter-spacing: .08em;
-                  padding: 0 0 8px 0;
-                }
           - type: horizontal-stack
             cards:
               - type: custom:mushroom-person-card
                 entity: person.person_1
-                name: Person 1
-                icon_type: icon
-                primary_info: none
-                secondary_info: none
-                layout: vertical
+                layout: horizontal
+                fill_container: false
+                icon_type: entity-picture
+                primary_info: name
+                secondary_info: state
                 card_mod:
                   style: *person_chip_style
               - type: custom:mushroom-person-card
                 entity: person.person_2
-                name: Person 2
-                icon_type: icon
-                primary_info: none
-                secondary_info: none
-                layout: vertical
+                layout: horizontal
+                fill_container: false
+                icon_type: entity-picture
+                primary_info: name
+                secondary_info: state
                 card_mod:
                   style: *person_chip_style
       - type: custom:mushroom-template-card
@@ -15665,8 +14989,8 @@ views:
     type: custom:grid-layout
     layout:
       # Gleiche Rasterstruktur wie die Startseite; nur Karten und Navigation werden je Seite angepasst.
-      grid-template-columns: 300px minmax(0, 1fr) 54px
-      grid-template-rows: 96px 1px minmax(0, 1fr) 64px
+      grid-template-columns: 350px minmax(0, 1fr) 54px
+      grid-template-rows: 60px 1px minmax(0, 1fr) 64px
       grid-template-areas: |
         "presence title close"
         "divider divider divider"
@@ -15713,37 +15037,24 @@ views:
               padding: 0;
             }
         cards:
-          - type: markdown
-            content: "**ANWESENHEIT**"
-            card_mod:
-              style: |
-                ha-card {
-                  color: rgba(255,255,255,.58);
-                  background: transparent;
-                  box-shadow: none;
-                  border: 0;
-                  font-size: 12px;
-                  letter-spacing: .08em;
-                  padding: 0 0 8px 0;
-                }
           - type: horizontal-stack
             cards:
               - type: custom:mushroom-person-card
                 entity: person.person_1
-                name: Person 1
-                icon_type: icon
-                primary_info: none
-                secondary_info: none
-                layout: vertical
+                layout: horizontal
+                fill_container: false
+                icon_type: entity-picture
+                primary_info: name
+                secondary_info: state
                 card_mod:
                   style: *person_chip_style
               - type: custom:mushroom-person-card
                 entity: person.person_2
-                name: Person 2
-                icon_type: icon
-                primary_info: none
-                secondary_info: none
-                layout: vertical
+                layout: horizontal
+                fill_container: false
+                icon_type: entity-picture
+                primary_info: name
+                secondary_info: state
                 card_mod:
                   style: *person_chip_style
       - type: custom:mushroom-template-card
@@ -15959,8 +15270,8 @@ views:
     type: custom:grid-layout
     layout:
       # Gleiche Rasterstruktur wie die Startseite; nur Karten und Navigation werden je Seite angepasst.
-      grid-template-columns: 300px minmax(0, 1fr) 54px
-      grid-template-rows: 96px 1px minmax(0, 1fr) 64px
+      grid-template-columns: 350px minmax(0, 1fr) 54px
+      grid-template-rows: 60px 1px minmax(0, 1fr) 64px
       grid-template-areas: |
         "presence title close"
         "divider divider divider"
@@ -16007,37 +15318,24 @@ views:
               padding: 0;
             }
         cards:
-          - type: markdown
-            content: "**ANWESENHEIT**"
-            card_mod:
-              style: |
-                ha-card {
-                  color: rgba(255,255,255,.58);
-                  background: transparent;
-                  box-shadow: none;
-                  border: 0;
-                  font-size: 12px;
-                  letter-spacing: .08em;
-                  padding: 0 0 8px 0;
-                }
           - type: horizontal-stack
             cards:
               - type: custom:mushroom-person-card
                 entity: person.person_1
-                name: Person 1
-                icon_type: icon
-                primary_info: none
-                secondary_info: none
-                layout: vertical
+                layout: horizontal
+                fill_container: false
+                icon_type: entity-picture
+                primary_info: name
+                secondary_info: state
                 card_mod:
                   style: *person_chip_style
               - type: custom:mushroom-person-card
                 entity: person.person_2
-                name: Person 2
-                icon_type: icon
-                primary_info: none
-                secondary_info: none
-                layout: vertical
+                layout: horizontal
+                fill_container: false
+                icon_type: entity-picture
+                primary_info: name
+                secondary_info: state
                 card_mod:
                   style: *person_chip_style
       - type: custom:mushroom-template-card
@@ -16253,8 +15551,8 @@ views:
     type: custom:grid-layout
     layout:
       # Gleiche Rasterstruktur wie die Startseite; nur Karten und Navigation werden je Seite angepasst.
-      grid-template-columns: 300px minmax(0, 1fr) 54px
-      grid-template-rows: 96px 1px minmax(0, 1fr) 64px
+      grid-template-columns: 350px minmax(0, 1fr) 54px
+      grid-template-rows: 60px 1px minmax(0, 1fr) 64px
       grid-template-areas: |
         "presence title close"
         "divider divider divider"
@@ -16301,37 +15599,24 @@ views:
               padding: 0;
             }
         cards:
-          - type: markdown
-            content: "**ANWESENHEIT**"
-            card_mod:
-              style: |
-                ha-card {
-                  color: rgba(255,255,255,.58);
-                  background: transparent;
-                  box-shadow: none;
-                  border: 0;
-                  font-size: 12px;
-                  letter-spacing: .08em;
-                  padding: 0 0 8px 0;
-                }
           - type: horizontal-stack
             cards:
               - type: custom:mushroom-person-card
                 entity: person.person_1
-                name: Person 1
-                icon_type: icon
-                primary_info: none
-                secondary_info: none
-                layout: vertical
+                layout: horizontal
+                fill_container: false
+                icon_type: entity-picture
+                primary_info: name
+                secondary_info: state
                 card_mod:
                   style: *person_chip_style
               - type: custom:mushroom-person-card
                 entity: person.person_2
-                name: Person 2
-                icon_type: icon
-                primary_info: none
-                secondary_info: none
-                layout: vertical
+                layout: horizontal
+                fill_container: false
+                icon_type: entity-picture
+                primary_info: name
+                secondary_info: state
                 card_mod:
                   style: *person_chip_style
       - type: custom:mushroom-template-card
@@ -16547,8 +15832,8 @@ views:
     type: custom:grid-layout
     layout:
       # Gleiche Rasterstruktur wie die Startseite; nur Karten und Navigation werden je Seite angepasst.
-      grid-template-columns: 300px minmax(0, 1fr) 54px
-      grid-template-rows: 96px 1px minmax(0, 1fr) 64px
+      grid-template-columns: 350px minmax(0, 1fr) 54px
+      grid-template-rows: 60px 1px minmax(0, 1fr) 64px
       grid-template-areas: |
         "presence title close"
         "divider divider divider"
@@ -16595,37 +15880,24 @@ views:
               padding: 0;
             }
         cards:
-          - type: markdown
-            content: "**ANWESENHEIT**"
-            card_mod:
-              style: |
-                ha-card {
-                  color: rgba(255,255,255,.58);
-                  background: transparent;
-                  box-shadow: none;
-                  border: 0;
-                  font-size: 12px;
-                  letter-spacing: .08em;
-                  padding: 0 0 8px 0;
-                }
           - type: horizontal-stack
             cards:
               - type: custom:mushroom-person-card
                 entity: person.person_1
-                name: Person 1
-                icon_type: icon
-                primary_info: none
-                secondary_info: none
-                layout: vertical
+                layout: horizontal
+                fill_container: false
+                icon_type: entity-picture
+                primary_info: name
+                secondary_info: state
                 card_mod:
                   style: *person_chip_style
               - type: custom:mushroom-person-card
                 entity: person.person_2
-                name: Person 2
-                icon_type: icon
-                primary_info: none
-                secondary_info: none
-                layout: vertical
+                layout: horizontal
+                fill_container: false
+                icon_type: entity-picture
+                primary_info: name
+                secondary_info: state
                 card_mod:
                   style: *person_chip_style
       - type: custom:mushroom-template-card
