@@ -72,8 +72,8 @@ views:
                 card_mod:
                   style: &person_chip_style |
                     ha-card {
-                      width: 44px;
-                      height: 44px;
+                      width: 50;
+                      height: 50;
                       border-radius: 50%;
                       background: rgba(20, 30, 78, .48);
                       border: 1px solid rgba(156, 171, 218, .28);
@@ -171,7 +171,7 @@ views:
             entity: weather.forecast_home
             name: Wetter
             forecast_type: daily
-            show_forecast: true
+            show_forecast: false
             card_mod:
               style: &glass_card |
                 ha-card {
@@ -194,7 +194,7 @@ views:
       - type: picture-elements
         view_layout:
           grid-area: floorplan
-        image: /local/sp-dashboard/floorplan.svg
+        image: /hacsfiles/sp-dashboard/floorplan.svg
         card_mod:
           style: |
             ha-card {
